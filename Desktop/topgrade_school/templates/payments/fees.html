@@ -1,0 +1,308 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}School Fees Structure - Top Grade Education Centre{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0"><i class="fas fa-money-bill-wave me-2"></i>School Fees Structure - Academic Year 2024</h2>
+                </div>
+                <div class="card-body">
+                    <!-- Important Notice -->
+                    <div class="alert alert-warning mb-4">
+                        <h5><i class="fas fa-exclamation-triangle me-2"></i>Important Notice</h5>
+                        <p class="mb-0">All fees are payable per term (3 terms per year). Fees are subject to change with prior notice. 
+                        Discounts available for siblings and early payments.</p>
+                    </div>
+
+                    <!-- Fees Table -->
+                    <div class="table-responsive mb-5">
+                        <h4 class="border-bottom pb-2 mb-4 text-primary">
+                            <i class="fas fa-table me-2"></i>Termly Fees Structure (KES)
+                        </h4>
+                        
+                        <table class="table table-bordered table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Grade</th>
+                                    <th>Tuition Fees</th>
+                                    <th>Activity Fees</th>
+                                    <th>Lab/Computer Fees</th>
+                                    <th>Library Fees</th>
+                                    <th>Total per Term</th>
+                                    <th>Total per Year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Grade 1</strong></td>
+                                    <td>25,000</td>
+                                    <td>3,000</td>
+                                    <td>2,000</td>
+                                    <td>1,500</td>
+                                    <td><strong>31,500</strong></td>
+                                    <td><strong>94,500</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Grade 2</strong></td>
+                                    <td>26,000</td>
+                                    <td>3,500</td>
+                                    <td>2,500</td>
+                                    <td>1,500</td>
+                                    <td><strong>33,500</strong></td>
+                                    <td><strong>100,500</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Grade 3</strong></td>
+                                    <td>27,000</td>
+                                    <td>4,000</td>
+                                    <td>3,000</td>
+                                    <td>1,500</td>
+                                    <td><strong>35,500</strong></td>
+                                    <td><strong>106,500</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Grade 4</strong></td>
+                                    <td>28,000</td>
+                                    <td>4,500</td>
+                                    <td>3,500</td>
+                                    <td>2,000</td>
+                                    <td><strong>38,000</strong></td>
+                                    <td><strong>114,000</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Grade 5</strong></td>
+                                    <td>30,000</td>
+                                    <td>5,000</td>
+                                    <td>4,000</td>
+                                    <td>2,000</td>
+                                    <td><strong>41,000</strong></td>
+                                    <td><strong>123,000</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Grade 6</strong></td>
+                                    <td>32,000</td>
+                                    <td>5,500</td>
+                                    <td>4,500</td>
+                                    <td>2,000</td>
+                                    <td><strong>44,000</strong></td>
+                                    <td><strong>132,000</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Grade 7</strong></td>
+                                    <td>35,000</td>
+                                    <td>6,000</td>
+                                    <td>5,000</td>
+                                    <td>2,500</td>
+                                    <td><strong>48,500</strong></td>
+                                    <td><strong>145,500</strong></td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="table-secondary">
+                                <tr>
+                                    <td colspan="5" class="text-end"><strong>Average per Term</strong></td>
+                                    <td><strong>38,857</strong></td>
+                                    <td><strong>116,571</strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <!-- Additional Charges -->
+                    <div class="row mb-5">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-header bg-info text-white">
+                                    <h5 class="mb-0"><i class="fas fa-plus-circle me-2"></i>One-Time Charges</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="mb-2"><strong>Admission Fee:</strong> KES 5,000</li>
+                                        <li class="mb-2"><strong>Registration Fee:</strong> KES 3,000</li>
+                                        <li class="mb-2"><strong>ID Card:</strong> KES 500</li>
+                                        <li class="mb-2"><strong>Medical Fee (Annual):</strong> KES 2,000</li>
+                                        <li><strong>School Uniform Set:</strong> KES 8,000</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-header bg-success text-white">
+                                    <h5 class="mb-0"><i class="fas fa-percentage me-2"></i>Discounts & Benefits</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="mb-2"><span class="badge bg-success me-2">10%</span> Sibling Discount (2nd child)</li>
+                                        <li class="mb-2"><span class="badge bg-success me-2">15%</span> Sibling Discount (3rd+ child)</li>
+                                        <li class="mb-2"><span class="badge bg-success me-2">5%</span> Early Payment (Before term starts)</li>
+                                        <li class="mb-2"><span class="badge bg-success me-2">Full</span> Scholarship (Merit-based)</li>
+                                        <li><span class="badge bg-success me-2">50%</span> Staff Children Discount</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Schedule -->
+                    <div class="schedule-card mb-5">
+                        <h4 class="border-bottom pb-2 mb-4 text-primary">
+                            <i class="fas fa-calendar-alt me-2"></i>Payment Schedule 2024
+                        </h4>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="text-success">Term 1</h5>
+                                        <p class="mb-1"><strong>Jan 8 - Mar 29</strong></p>
+                                        <p class="mb-0"><strong>Due: Jan 5, 2024</strong></p>
+                                        <div class="mt-2">
+                                            <span class="badge bg-warning">12 Weeks</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="text-success">Term 2</h5>
+                                        <p class="mb-1"><strong>Apr 29 - Jul 19</strong></p>
+                                        <p class="mb-0"><strong>Due: Apr 26, 2024</strong></p>
+                                        <div class="mt-2">
+                                            <span class="badge bg-warning">11 Weeks</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="text-success">Term 3</h5>
+                                        <p class="mb-1"><strong>Sep 2 - Nov 22</strong></p>
+                                        <p class="mb-0"><strong>Due: Aug 30, 2024</strong></p>
+                                        <div class="mt-2">
+                                            <span class="badge bg-warning">12 Weeks</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Methods -->
+                    <div class="payment-methods mb-5">
+                        <h4 class="border-bottom pb-2 mb-4 text-primary">
+                            <i class="fas fa-credit-card me-2"></i>Payment Methods
+                        </h4>
+                        
+                        <div class="row text-center">
+                            <div class="col-md-3 mb-3">
+                                <a href="{% url 'bank_details' %}" class="text-decoration-none">
+                                    <div class="p-3 border rounded h-100 hover-shadow">
+                                        <i class="fas fa-university fa-2x text-primary mb-2"></i>
+                                        <h6>Bank Transfer</h6>
+                                        <p class="small text-muted mb-0">Direct to school account</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 border rounded h-100">
+                                    <i class="fas fa-mobile-alt fa-2x text-success mb-2"></i>
+                                    <h6>M-Pesa</h6>
+                                    <p class="small text-muted mb-0">Paybill: 123456</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <a href="{% url 'pay_at_office' %}" class="text-decoration-none">
+                                    <div class="p-3 border rounded h-100 hover-shadow">
+                                        <i class="fas fa-building fa-2x text-info mb-2"></i>
+                                        <h6>Cash at Office</h6>
+                                        <p class="small text-muted mb-0">Visit accounts office</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 border rounded h-100">
+                                    <i class="fas fa-credit-card fa-2x text-warning mb-2"></i>
+                                    <h6>Cheque</h6>
+                                    <p class="small text-muted mb-0">Payable to school name</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Important Information -->
+                    <div class="alert alert-info">
+                        <h5><i class="fas fa-info-circle me-2"></i>Important Information</h5>
+                        <ul class="mb-0">
+                            <li>Late payment penalty: 5% of term fees after due date</li>
+                            <li>No refunds after 2 weeks from term start</li>
+                            <li>Payment plans available upon request</li>
+                            <li>All fees include VAT where applicable</li>
+                            <li>Receipts issued within 24 hours of payment</li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact & Actions -->
+                    <div class="mt-5 d-flex justify-content-between">
+                        <div>
+                            <h6><i class="fas fa-headset me-2"></i>Need Assistance?</h6>
+                            <p class="mb-0">Accounts Department: (020) 123-4567 | accounts@topgrade.edu</p>
+                        </div>
+                        <div class="text-end">
+                            <a href="{% url 'bank_details' %}" class="btn btn-primary me-2">
+                                <i class="fas fa-university me-1"></i> Bank Details
+                            </a>
+                            <button onclick="window.print()" class="btn btn-outline-primary">
+                                <i class="fas fa-print me-1"></i> Print Fees
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+.schedule-card .card {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+}
+
+.schedule-card .card:hover {
+    border-color: #007bff;
+}
+
+.badge {
+    font-size: 0.8em;
+    padding: 0.4em 0.8em;
+}
+
+@media print {
+    .btn, .alert, .payment-methods .hover-shadow {
+        display: none !important;
+    }
+    
+    .table {
+        font-size: 12px;
+    }
+}
+</style>
+{% endblock %}
