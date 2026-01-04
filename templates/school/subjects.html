@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Subjects - Top Grade Education Centre{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-5">Subjects We Offer</h1>
+    
+    {% if not has_subjects %}
+    <div class="alert alert-warning">
+        <h4>⚠️ No Subjects in Database</h4>
+        <p>Subjects are currently hardcoded. Add subjects through the Django admin panel.</p>
+        <a href="/admin/school/subject/add/" class="btn btn-primary">Add Subjects</a>
+    </div>
+    {% endif %}
+    
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            {% if subjects_by_category %}
+                {% for category, subjects_list in subjects_by_category.items %}
+                <div class="card mb-4">
+                    <div class="card-header 
+                        {% if category == 'Core Subject' %}bg-primary text-white
+                        {% elif category == 'Foundation Subject' %}bg-warning text-white
+                        {% else %}bg-success text-white{% endif %}">
+                        <h4 class="mb-0">{{ category }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            {% for subject in subjects_list %}
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="rounded-circle p-3 me-3 
+                                        {% if category == 'Core Subject' %}bg-light-blue
+                                        {% elif category == 'Foundation Subject' %}bg-light-warning
+                                        {% else %}bg-light-success{% endif %}">
+                                        <i class="{{ subject.icon_class|default:'fas fa-book' }} fa-2x 
+                                            {% if category == 'Core Subject' %}text-primary
+                                            {% elif category == 'Foundation Subject' %}text-warning
+                                            {% else %}text-success{% endif %}"></i>
+                                    </div>
+                                    <div>
+                                        <h5>{{ subject.name }}</h5>
+                                        <p class="text-muted mb-0">{{ subject.description|default:"No description available" }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <!-- Fallback to hardcoded subjects if database is empty -->
+                {% include 'school/subjects_fallback.html' %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+.bg-light-blue { background-color: #e3f2fd; }
+.bg-light-warning { background-color: #fff3cd; }
+.bg-light-success { background-color: #d1e7dd; }
+</style>
+{% endblock %}

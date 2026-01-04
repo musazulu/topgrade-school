@@ -1,0 +1,310 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pay at Office - Top Grade Education Centre{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0"><i class="fas fa-building me-2"></i>Pay Fees at School Office</h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-success mb-4">
+                        <h5><i class="fas fa-check-circle me-2"></i>Welcome to Our School Office</h5>
+                        <p class="mb-0">You can make fee payments directly at our school accounts office. We accept cash, cheques, and bank transfers.</p>
+                    </div>
+
+                    <!-- Office Information -->
+                    <div class="office-info mb-5">
+                        <h4 class="border-bottom pb-2 mb-4 text-primary">
+                            <i class="fas fa-map-marker-alt me-2"></i>Office Location & Hours
+                        </h4>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">
+                                            <i class="fas fa-map-pin me-2"></i>Main Office Location
+                                        </h5>
+                                        <address class="mb-0">
+                                            <strong>Top Grade Education Centre</strong><br>
+                                            123 Learning Street<br>
+                                            Education Zone, CBD<br>
+                                            Nairobi, Kenya<br>
+                                            <i class="fas fa-phone me-1"></i> (020) 123-4567<br>
+                                            <i class="fas fa-envelope me-1"></i> office@topgrade.edu
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">
+                                            <i class="fas fa-clock me-2"></i>Payment Hours
+                                        </h5>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><strong>Monday - Friday:</strong> 8:00 AM - 4:00 PM</li>
+                                            <li class="mb-2"><strong>Saturday:</strong> 9:00 AM - 1:00 PM</li>
+                                            <li class="mb-2"><strong>Sunday:</strong> Closed</li>
+                                            <li><strong>Lunch Break:</strong> 1:00 PM - 2:00 PM</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- What to Bring -->
+                    <div class="requirements mb-5">
+                        <h4 class="border-bottom pb-2 mb-4 text-warning">
+                            <i class="fas fa-clipboard-check me-2"></i>What to Bring
+                        </h4>
+                        
+                        <div class="list-group mb-4">
+                            <div class="list-group-item">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Student Admission Number</strong> (Required for processing)
+                            </div>
+                            <div class="list-group-item">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Student Name</strong> (For verification)
+                            </div>
+                            <div class="list-group-item">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Previous Receipt</strong> (If applicable)
+                            </div>
+                            <div class="list-group-item">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Payment Amount</strong> (Cash, cheque, or proof of bank transfer)
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <h6><i class="fas fa-lightbulb me-2"></i>Tip</h6>
+                            <p class="mb-0">For faster service, download and fill the payment slip before coming to the office.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary mt-2">
+                                <i class="fas fa-download me-1"></i> Download Payment Slip
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Payment Process -->
+                    <div class="process mb-5">
+                        <h4 class="border-bottom pb-2 mb-4 text-success">
+                            <i class="fas fa-list-ol me-2"></i>Payment Process at Office
+                        </h4>
+                        
+                        <div class="row text-center">
+                            <div class="col-md-3 mb-3">
+                                <div class="step-card p-3">
+                                    <div class="step-number rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+                                        <strong>1</strong>
+                                    </div>
+                                    <h6>Arrive at Office</h6>
+                                    <p class="small text-muted mb-0">Proceed to Accounts Department</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="step-card p-3">
+                                    <div class="step-number rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+                                        <strong>2</strong>
+                                    </div>
+                                    <h6>Submit Details</h6>
+                                    <p class="small text-muted mb-0">Provide student information</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="step-card p-3">
+                                    <div class="step-number rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+                                        <strong>3</strong>
+                                    </div>
+                                    <h6>Make Payment</h6>
+                                    <p class="small text-muted mb-0">Pay cash, cheque, or show proof</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="step-card p-3">
+                                    <div class="step-number rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+                                        <strong>4</strong>
+                                    </div>
+                                    <h6>Get Receipt</h6>
+                                    <p class="small text-muted mb-0">Receive official payment receipt</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accepted Payment Methods -->
+                    <div class="payment-methods mb-5">
+                        <h4 class="border-bottom pb-2 mb-4 text-info">
+                            <i class="fas fa-money-check-alt me-2"></i>Accepted at Office
+                        </h4>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="card text-center h-100">
+                                    <div class="card-body">
+                                        <i class="fas fa-money-bill-wave fa-2x text-success mb-3"></i>
+                                        <h5>Cash</h5>
+                                        <p class="small text-muted mb-0">Kenyan Shillings (KES) only</p>
+                                        <div class="mt-2">
+                                            <span class="badge bg-success">Exact amount preferred</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card text-center h-100">
+                                    <div class="card-body">
+                                        <i class="fas fa-file-invoice-dollar fa-2x text-info mb-3"></i>
+                                        <h5>Cheque</h5>
+                                        <p class="small text-muted mb-0">Payable to school name</p>
+                                        <div class="mt-2">
+                                            <span class="badge bg-info">Clears in 3-5 days</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card text-center h-100">
+                                    <div class="card-body">
+                                        <i class="fas fa-receipt fa-2x text-warning mb-3"></i>
+                                        <h5>Bank Proof</h5>
+                                        <p class="small text-muted mb-0">Bank transfer receipt</p>
+                                        <div class="mt-2">
+                                            <span class="badge bg-warning">Bring transaction slip</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Important Notes -->
+                    <div class="notes mb-5">
+                        <h4 class="border-bottom pb-2 mb-4 text-danger">
+                            <i class="fas fa-exclamation-circle me-2"></i>Important Notes
+                        </h4>
+                        
+                        <div class="alert alert-warning">
+                            <ul class="mb-0">
+                                <li>Keep your receipt safe - it's required for all fee queries</li>
+                                <li>Receipts are issued immediately upon payment</li>
+                                <li>No payments accepted after office hours</li>
+                                <li>Large cash payments (>KES 50,000) require prior notice</li>
+                                <li>Counterfeit notes will be confiscated and reported</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Contact & Directions -->
+                    <div class="contact-section">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">
+                                            <i class="fas fa-phone me-2"></i>Contact Information
+                                        </h5>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><strong>Accounts Office:</strong> (020) 123-4567 Ext. 101</li>
+                                            <li class="mb-2"><strong>Accounts Email:</strong> accounts@topgrade.edu</li>
+                                            <li class="mb-2"><strong>Emergency:</strong> 0700 123 456</li>
+                                            <li><strong>WhatsApp:</strong> 0712 345 678</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">
+                                            <i class="fas fa-directions me-2"></i>Getting Here
+                                        </h5>
+                                        <p class="mb-2"><strong>By Matatu:</strong> Route 46 to Education Zone</p>
+                                        <p class="mb-2"><strong>By Bus:</strong> City Shuttle to Learning Street</p>
+                                        <p class="mb-0"><strong>Parking:</strong> Available in school compound</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary mt-3">
+                                            <i class="fas fa-map-marked-alt me-1"></i> View on Google Maps
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="mt-5 text-center">
+                        <a href="{% url 'fees' %}" class="btn btn-outline-primary me-3">
+                            <i class="fas fa-file-invoice-dollar me-1"></i> View Fees Structure
+                        </a>
+                        <a href="{% url 'bank_details' %}" class="btn btn-primary me-3">
+                            <i class="fas fa-university me-1"></i> Bank Transfer Details
+                        </a>
+                        <button onclick="window.print()" class="btn btn-info">
+                            <i class="fas fa-print me-1"></i> Print This Page
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.step-card {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.step-number {
+    font-size: 1.2rem;
+}
+
+.list-group-item {
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+}
+
+.list-group-item:first-child {
+    border-top: none;
+}
+
+.card {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+}
+
+.alert ul {
+    margin-bottom: 0;
+}
+
+.badge {
+    font-size: 0.75em;
+    padding: 0.35em 0.65em;
+}
+
+@media print {
+    .btn, .alert, .step-card:hover {
+        display: none !important;
+    }
+    
+    .card {
+        border: 1px solid #000 !important;
+        page-break-inside: avoid;
+    }
+}
+</style>
+{% endblock %}

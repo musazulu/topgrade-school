@@ -1,0 +1,295 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bank Payment Details - Top Grade Education Centre{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0"><i class="fas fa-university me-2"></i>Bank Payment Details</h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info mb-4">
+                        <h5><i class="fas fa-info-circle me-2"></i>Payment Instructions</h5>
+                        <p class="mb-0">Please use the bank details below to make payments for school fees, enrollment, or other charges. Always include the student's name and ID as reference.</p>
+                    </div>
+
+                    <!-- Bank Information -->
+                    <div class="bank-card mb-5">
+                        <h4 class="border-bottom pb-2 mb-4 text-primary">
+                            <i class="fas fa-landmark me-2"></i>School Bank Account
+                        </h4>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="info-box mb-4">
+                                    <h6 class="text-muted mb-2">Bank Name</h6>
+                                    <p class="h5">{{ bank_details.bank_name|default:"Standard Chartered Bank" }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-box mb-4">
+                                    <h6 class="text-muted mb-2">Account Name</h6>
+                                    <p class="h5">{{ bank_details.account_name|default:"Top Grade Education Centre" }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="info-box mb-4">
+                                    <h6 class="text-muted mb-2">Account Number</h6>
+                                    <p class="h5 text-monospace">{{ bank_details.account_number|default:"0101234567890" }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-box mb-4">
+                                    <h6 class="text-muted mb-2">Branch</h6>
+                                    <p class="h5">{{ bank_details.branch|default:"Main Branch, City Centre" }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="info-box mb-4">
+                                    <h6 class="text-muted mb-2">SWIFT Code</h6>
+                                    <p class="h5">{{ bank_details.swift_code|default:"SCBLKENAXXX" }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-box mb-4">
+                                    <h6 class="text-muted mb-2">Currency</h6>
+                                    <p class="h5">{{ bank_details.currency|default:"KES (Kenyan Shillings)" }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- M-Pesa Payment Option -->
+                    <div class="mpesa-card mb-5">
+                        <h4 class="border-bottom pb-2 mb-4 text-success">
+                            <i class="fas fa-mobile-alt me-2"></i>M-Pesa Payment Option
+                        </h4>
+                        
+                        <div class="alert alert-success">
+                            <h6><i class="fas fa-bolt me-2"></i>Quick Payment via M-Pesa</h6>
+                            <p class="mb-0">Use Paybill number for faster mobile payments</p>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="info-box mb-4">
+                                    <h6 class="text-muted mb-2">Paybill Number</h6>
+                                    <p class="h4 text-monospace">{{ bank_details.paybill_number|default:"123456" }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-box mb-4">
+                                    <h6 class="text-muted mb-2">Account Number</h6>
+                                    <p class="h5">Student ID Number</p>
+                                    <p class="text-muted small">Use student admission number as account number</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Important Instructions -->
+                    <div class="instructions-card mb-5">
+                        <h4 class="border-bottom pb-2 mb-4 text-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Important Instructions
+                        </h4>
+                        
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Always include student name</strong> in the payment reference
+                            </div>
+                            <div class="list-group-item">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Keep your payment slip/receipt</strong> as proof of payment
+                            </div>
+                            <div class="list-group-item">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Email payment confirmation</strong> to accounts@topgrade.edu
+                            </div>
+                            <div class="list-group-item">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Payments are processed within <strong>24-48 hours</strong>
+                            </div>
+                            <div class="list-group-item">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Contact accounts department for <strong>payment confirmation</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Types -->
+                    <div class="payment-types mb-5">
+                        <h4 class="border-bottom pb-2 mb-4 text-info">
+                            <i class="fas fa-money-check-alt me-2"></i>Accepted Payment Types
+                        </h4>
+                        
+                        <div class="row text-center">
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 border rounded">
+                                    <i class="fas fa-university fa-2x text-primary mb-2"></i>
+                                    <h6>Bank Transfer</h6>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 border rounded">
+                                    <i class="fas fa-mobile-alt fa-2x text-success mb-2"></i>
+                                    <h6>M-Pesa</h6>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 border rounded">
+                                    <i class="fas fa-credit-card fa-2x text-info mb-2"></i>
+                                    <h6>Credit Card</h6>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 border rounded">
+                                    <i class="fas fa-money-bill-wave fa-2x text-warning mb-2"></i>
+                                    <h6>Cash (Office)</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="contact-card">
+                        <h4 class="border-bottom pb-2 mb-4 text-primary">
+                            <i class="fas fa-headset me-2"></i>Accounts Department Contact
+                        </h4>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="contact-info p-3 bg-light rounded mb-3">
+                                    <h6><i class="fas fa-phone me-2"></i>Phone Numbers</h6>
+                                    <ul class="list-unstyled mb-0">
+                                        <li>Accounts: (020) 123-4567</li>
+                                        <li>Mobile: 0712 345 678</li>
+                                        <li>Emergency: 0700 123 456</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact-info p-3 bg-light rounded mb-3">
+                                    <h6><i class="fas fa-envelope me-2"></i>Email Addresses</h6>
+                                    <ul class="list-unstyled mb-0">
+                                        <li>accounts@topgrade.edu</li>
+                                        <li>fees@topgrade.edu</li>
+                                        <li>finance@topgrade.edu</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6><i class="fas fa-clock me-2"></i>Office Hours</h6>
+                            <p class="mb-0">Monday - Friday: 8:00 AM - 5:00 PM<br>
+                            Saturday: 9:00 AM - 1:00 PM<br>
+                            Sunday: Closed</p>
+                        </div>
+                    </div>
+
+                    <!-- Print Button -->
+                    <div class="mt-5 text-center">
+                        <button onclick="window.print()" class="btn btn-primary me-3">
+                            <i class="fas fa-print me-1"></i> Print This Page
+                        </button>
+                        <a href="{% url 'contact' %}" class="btn btn-outline-primary">
+                            <i class="fas fa-question-circle me-1"></i> Need Help?
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.bank-card, .mpesa-card, .instructions-card, .payment-types, .contact-card {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid;
+}
+
+.bank-card { border-left-color: #007bff; }
+.mpesa-card { border-left-color: #28a745; }
+.instructions-card { border-left-color: #ffc107; }
+.payment-types { border-left-color: #17a2b8; }
+.contact-card { border-left-color: #007bff; }
+
+.info-box {
+    padding: 15px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+.text-monospace {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+@media print {
+    .btn, .alert-info {
+        display: none !important;
+    }
+    
+    .card {
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    .card-header {
+        background-color: #fff !important;
+        color: #000 !important;
+        border-bottom: 2px solid #000 !important;
+    }
+}
+</style>
+
+<script>
+// Add copy to clipboard functionality for account number
+document.addEventListener('DOMContentLoaded', function() {
+    // Make account numbers selectable on click
+    const accountNumbers = document.querySelectorAll('.text-monospace');
+    accountNumbers.forEach(el => {
+        el.style.cursor = 'pointer';
+        el.title = 'Click to select';
+        el.addEventListener('click', function() {
+            const range = document.createRange();
+            range.selectNodeContents(this);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            
+            // Show brief feedback
+            const originalText = this.textContent;
+            this.textContent = 'Copied to clipboard!';
+            setTimeout(() => {
+                this.textContent = originalText;
+            }, 1000);
+        });
+    });
+});
+</script>
+{% endblock %}
