@@ -18,9 +18,7 @@ DEBUG = os.environ.get("DJANGO_DEBUG", "False") == "True"
 if "RENDER_EXTERNAL_HOSTNAME" in os.environ:
     ALLOWED_HOSTS = [os.environ["RENDER_EXTERNAL_HOSTNAME"]]
 else:
-    ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(
-        ","
-    )
+    ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 
 # Installed apps
 INSTALLED_APPS = [
@@ -37,9 +35,9 @@ INSTALLED_APPS = [
     "accounts",
 ]
 
-# Middleware
+# Middleware — KEEP SecurityMiddleware enabled everywhere
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
+    "django.middleware.security.SecurityMiddleware",  # Re-enabled
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -130,8 +128,9 @@ else:
     EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
     DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "noreply@topgrade.edu")
 
-# >>> SECURITY: Enforce HTTPS in production
-if not DEBUG:
+# >>> SECURITY: Enforce full security on Render, partial locally
+if "RENDER" in os.environ:
+    # Full production security
     SECURE_SSL_REDIRECT = True
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     SESSION_COOKIE_SECURE = True
@@ -141,3 +140,10 @@ if not DEBUG:
     SECURE_HSTS_PRELOAD = True
     X_FRAME_OPTIONS = "DENY"
     SECURE_CONTENT_TYPE_NOSNIFF = True
+else:
+    # Local development: disable ONLY SSL redirect, keep other security
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+    SECURE_HSTS_SECONDS = 0
+    # Keep: X_FRAME_OPTIONS, SECURE_CONTENT_TYPE_NOSNIFF (safe over HTTP)

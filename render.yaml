@@ -2,14 +2,26 @@ services:
   - type: web
     name: topgrade-school
     runtime: python
-    region: frankfurt        # Change to oregon (US) or singapore if preferred
+    region: frankfurt        # Change to oregon or singapore if preferred
     plan: free
-    buildCommand: "pip install -r requirements.txt"
+    buildCommand: "python manage.py collectstatic --noinput && pip install -r requirements.txt"
     startCommand: "gunicorn topgrade_school.wsgi:application"
     envVars:
       - key: DJANGO_SECRET_KEY
         generateValue: true
       - key: DJANGO_DEBUG
         value: "False"
+      - key: DJANGO_ALLOWED_HOSTS
+        fromService:
+          name: topgrade-school
+          type: web
+          property: host
+      - key: RENDER
+        value: "true"
       - key: WEB_CONCURRENCY
         value: "4"
+
+databases:
+  - name: topgrade-school-db
+    databaseName: topgrade_school_db
+    user: topgrade_user
