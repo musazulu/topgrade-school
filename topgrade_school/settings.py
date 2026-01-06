@@ -5,22 +5,28 @@ Base Django settings for Top Grade School project.
 import os
 from pathlib import Path
 from django.core.management.utils import get_random_secret_key
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Secret key
+# ------------------------------------------------------------------------------
+# SECURITY
+# ------------------------------------------------------------------------------
+
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", get_random_secret_key())
 
-# Debug is controlled per environment
-DEBUG = os.environ.get("DJANGO_DEBUG", "False") == "True"
+DEBUG = os.environ.get("DJANGO_DEBUG", "False").lower() == "true"
 
-# Hosts — Render sets RENDER_EXTERNAL_HOSTNAME
-if "RENDER_EXTERNAL_HOSTNAME" in os.environ:
+# Render hostname handling
+if os.environ.get("RENDER_EXTERNAL_HOSTNAME"):
     ALLOWED_HOSTS = [os.environ["RENDER_EXTERNAL_HOSTNAME"]]
 else:
-    ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
-# Installed apps
+# ------------------------------------------------------------------------------
+# APPLICATIONS
+# ------------------------------------------------------------------------------
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -28,16 +34,20 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # Your apps
+
+    # Project apps
     "school",
     "enrollment",
     "payments",
     "accounts",
 ]
 
-# Middleware — KEEP SecurityMiddleware enabled everywhere
+# ------------------------------------------------------------------------------
+# MIDDLEWARE
+# ------------------------------------------------------------------------------
+
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",  # Re-enabled
+    "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -47,9 +57,17 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "topgrade_school.urls"
+# ------------------------------------------------------------------------------
+# URLS / WSGI
+# ------------------------------------------------------------------------------
 
-# Templates
+ROOT_URLCONF = "topgrade_school.urls"
+WSGI_APPLICATION = "topgrade_school.wsgi.application"
+
+# ------------------------------------------------------------------------------
+# TEMPLATES
+# ------------------------------------------------------------------------------
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -61,21 +79,21 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "school.context_processors.school_info",
+
+                # ⚠️ SAFE: comment out if it queries DB
+                # "school.context_processors.school_info",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = "topgrade_school.wsgi.application"
+# ------------------------------------------------------------------------------
+# DATABASE
+# ------------------------------------------------------------------------------
 
-# >>> DATABASE: Use PostgreSQL on Render, SQLite locally
-import dj_database_url
-
-if "RENDER" in os.environ:
+if os.environ.get("DATABASE_URL"):
     DATABASES = {
         "default": dj_database_url.config(
-            default=os.environ["DATABASE_URL"],
             conn_max_age=600,
             conn_health_checks=True,
         )
@@ -88,49 +106,68 @@ else:
         }
     }
 
-# Password validation
+# ------------------------------------------------------------------------------
+# PASSWORD VALIDATION
+# ------------------------------------------------------------------------------
+
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-# Internationalization
+# ------------------------------------------------------------------------------
+# INTERNATIONALIZATION
+# ------------------------------------------------------------------------------
+
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "Africa/Harare"
 USE_I18N = True
 USE_TZ = True
 
-# Static files (WhiteNoise)
+# ------------------------------------------------------------------------------
+# STATIC & MEDIA FILES
+# ------------------------------------------------------------------------------
+
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# ⚠️ IMPORTANT: do NOT define STATICFILES_DIRS on Render
+if DEBUG:
+    STATICFILES_DIRS = [BASE_DIR / "static"]
+
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# Media files
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+# ------------------------------------------------------------------------------
+# DEFAULTS
+# ------------------------------------------------------------------------------
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Email
+# ------------------------------------------------------------------------------
+# EMAIL
+# ------------------------------------------------------------------------------
+
 if DEBUG:
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 else:
     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
     EMAIL_HOST = os.environ.get("EMAIL_HOST", "smtp.gmail.com")
     EMAIL_PORT = int(os.environ.get("EMAIL_PORT", 587))
-    EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", "True") == "True"
+    EMAIL_USE_TLS = True
     EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
     EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
     DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "noreply@topgrade.edu")
 
-# >>> SECURITY: Enforce full security on Render, partial locally
-if "RENDER" in os.environ:
-    # Full production security
+# ------------------------------------------------------------------------------
+# SECURITY (RENDER)
+# ------------------------------------------------------------------------------
+
+if os.environ.get("RENDER"):
     SECURE_SSL_REDIRECT = True
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     SESSION_COOKIE_SECURE = True
@@ -141,9 +178,4 @@ if "RENDER" in os.environ:
     X_FRAME_OPTIONS = "DENY"
     SECURE_CONTENT_TYPE_NOSNIFF = True
 else:
-    # Local development: disable ONLY SSL redirect, keep other security
     SECURE_SSL_REDIRECT = False
-    SESSION_COOKIE_SECURE = False
-    CSRF_COOKIE_SECURE = False
-    SECURE_HSTS_SECONDS = 0
-    # Keep: X_FRAME_OPTIONS, SECURE_CONTENT_TYPE_NOSNIFF (safe over HTTP)
