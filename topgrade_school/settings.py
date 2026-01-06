@@ -100,7 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 LANGUAGE_CODE = "en-us"
-TIME_ZONE = "Africa/harare"
+TIME_ZONE = "Africa/Harare"
 USE_I18N = True
 USE_TZ = True
 
