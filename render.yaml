@@ -2,9 +2,9 @@ services:
   - type: web
     name: topgrade-school
     runtime: python
-    region: frankfurt        # Change to oregon or singapore if preferred
+    region: frankfurt
     plan: free
-    buildCommand: "python manage.py collectstatic --noinput && pip install -r requirements.txt"
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
     startCommand: "gunicorn topgrade_school.wsgi:application"
     envVars:
       - key: DJANGO_SECRET_KEY
