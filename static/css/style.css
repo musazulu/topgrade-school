@@ -106,3 +106,18 @@ footer a:hover {
         margin-bottom: 1rem;
     }
 }
+
+.navbar-brand img {
+    max-height: 50px;
+}
+
+.navbar-brand span {
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+    .navbar-brand span {
+        font-size: 0.95rem;
+    }
+}
