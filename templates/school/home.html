@@ -1,88 +1,106 @@
-{% extends 'base.html' %}
-
-{% block title %}Home - Top Grade Education Centre{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block title %}Home - Top Grade
+Education Centre{% endblock %} {% block content %}
 <!-- Hero Section -->
-<section class="hero-section py-5" style="background:  #0A2463;">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6 text-white">
-                <h1 class="display-4 fw-bold mb-3">Welcome to Top Grade Education Centre</h1>
-                <p class="lead mb-4">Where young minds grow, learn, and excel in a nurturing environment.</p>
-                <div class="d-flex gap-3">
-                    <a href="{% url 'enrollment_info' %}" class="btn btn-warning btn-lg px-4">
-                        <i class="fas fa-user-graduate me-2"></i>Apply Now
-                    </a>
-                    <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg px-4">
-                        <i class="fas fa-phone me-2"></i>Contact Us
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <img src="{% static 'images/children.jpeg' %}" 
-                     alt="Happy children learning" class="img-fluid rounded shadow">
-            </div>
+<section class="hero-section py-5" style="background: #0a2463">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 text-white">
+        <h1 class="display-4 fw-bold mb-3">
+          Welcome to Top Grade Education Centre
+        </h1>
+        <p class="lead mb-4">
+          Where young minds grow, learn, and excel in a nurturing environment.
+        </p>
+        <div class="d-flex gap-3">
+          <a
+            href="{% url 'enrollment_info' %}"
+            class="btn btn-warning btn-lg px-4"
+          >
+            <i class="fas fa-user-graduate me-2"></i>Apply Now
+          </a>
+          <a
+            href="{% url 'contact' %}"
+            class="btn btn-outline-light btn-lg px-4"
+          >
+            <i class="fas fa-phone me-2"></i>Contact Us
+          </a>
         </div>
+      </div>
+      <div class="col-md-6">
+        <img
+          src="{% static 'images/children.jpg' %}"
+          alt="Happy children learning"
+          class="img-fluid rounded shadow"
+          style="
+            max-height: 400px;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+          "
+        />
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Quick Info Section -->
 <section class="py-5">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body text-center">
-                        <i class="fas fa-clock fa-3x text-warning mb-3"></i>
-                        <h4 class="card-title">School Hours</h4>
-                        <p class="card-text">Mon - Fri: 7:30 AM - 3:30 PM</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body text-center">
-                        <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
-                        <h4 class="card-title">Grades</h4>
-                        <p class="card-text">Grade 1 to Grade 7</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body text-center">
-                        <i class="fas fa-child fa-3x text-success mb-3"></i>
-                        <h4 class="card-title">Ages</h4>
-                        <p class="card-text">4 to 12 Years Old</p>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body text-center">
+            <i class="fas fa-clock fa-3x text-warning mb-3"></i>
+            <h4 class="card-title">School Hours</h4>
+            <p class="card-text">Mon - Fri: 7:30 AM - 3:30 PM</p>
+          </div>
         </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body text-center">
+            <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
+            <h4 class="card-title">Grades</h4>
+            <p class="card-text">Grade 1 to Grade 7</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body text-center">
+            <i class="fas fa-child fa-3x text-success mb-3"></i>
+            <h4 class="card-title">Ages</h4>
+            <p class="card-text">4 to 12 Years Old</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Announcements -->
 <section class="py-5 bg-light">
-    <div class="container">
-        <h2 class="text-center mb-4">Latest Announcements</h2>
-        <div class="row g-4">
-            {% for announcement in announcements %}
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ announcement.title }}</h5>
-                        <p class="card-text">{{ announcement.content|truncatewords:30 }}</p>
-                        <small class="text-muted">{{ announcement.date_posted|date:"F d, Y" }}</small>
-                    </div>
-                </div>
-            </div>
-            {% empty %}
-            <div class="col-12 text-center">
-                <p>No announcements at the moment.</p>
-            </div>
-            {% endfor %}
+  <div class="container">
+    <h2 class="text-center mb-4">Latest Announcements</h2>
+    <div class="row g-4">
+      {% for announcement in announcements %}
+      <div class="col-md-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ announcement.title }}</h5>
+            <p class="card-text">{{ announcement.content|truncatewords:30 }}</p>
+            <small class="text-muted"
+              >{{ announcement.date_posted|date:"F d, Y" }}</small
+            >
+          </div>
         </div>
+      </div>
+      {% empty %}
+      <div class="col-12 text-center">
+        <p>No announcements at the moment.</p>
+      </div>
+      {% endfor %}
     </div>
+  </div>
 </section>
 {% endblock %}
