@@ -3,152 +3,216 @@
 {% block title %}Contact Us - Top Grade Education Centre{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <h1 class="text-center mb-5">Contact Us</h1>
-    
-    <div class="row">
-        <!-- Contact Information -->
-        <div class="col-md-5 mb-4">
-            <div class="card h-100">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">School Information</h4>
-                </div>
-                <div class="card-body">
-                    <div class="mb-4">
-                        <h5><i class="fas fa-map-marker-alt text-primary me-2"></i>Address</h5>
-                        <p class="ms-4"> 2334 Golden Heights <br>Education City<br>Shamva, Zimbabwe</p>
+<style>
+    .contact-section {
+        background-color: #0a2463;
+        padding: 2rem 0;
+        color: #ffffff;
+    }
+    .contact-section h1,
+    .contact-section h4,
+    .contact-section h5 {
+        color: #ffffff !important;
+    }
+    .contact-section .card {
+        background-color: #12347a;
+        border: none;
+        color: #e0e0ff;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+    .contact-section .card-header.bg-primary {
+        background-color: #1a3a8f !important;
+    }
+    .contact-section .card-header.bg-warning {
+        background-color: #d97706 !important;
+    }
+    .contact-section .card-header.bg-success {
+        background-color: #166534 !important;
+    }
+    .contact-section .form-label,
+    .contact-section .form-check-label {
+        color: #ffffff !important;
+    }
+    .contact-section .btn-primary {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: #0a2463;
+    }
+    .contact-section .btn-primary:hover {
+        background-color: #e0a800;
+        color: #0a2463;
+    }
+    .contact-section .btn-outline-secondary {
+        color: #ffc107 !important;
+        border-color: #ffc107 !important;
+    }
+    .contact-section .btn-outline-secondary:hover {
+        background-color: #ffc107 !important;
+        color: #0a2463 !important;
+    }
+    .map-placeholder {
+        background: #1a3a8f !important;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .map-placeholder .text-muted {
+        color: #a0a0c0 !important;
+    }
+    .map-placeholder i {
+        color: #ffc107 !important;
+    }
+</style>
+
+<div class="contact-section">
+    <div class="container py-5">
+        <h1 class="text-center mb-5">Contact Us</h1>
+        
+        <div class="row">
+            <!-- Contact Information -->
+            <div class="col-md-5 mb-4">
+                <div class="card h-100">
+                    <div class="card-header text-white">
+                        <h4 class="mb-0">School Information</h4>
                     </div>
-                    
-                    <div class="mb-4">
-                        <h5><i class="fas fa-clock text-primary me-2"></i>Office Hours</h5>
-                        <p class="ms-4">
-                            <strong>Monday - Friday:</strong> 7:30 AM - 4:00 PM<br>
-                            <strong>Saturday:</strong> 9:00 AM - 12:00 PM<br>
-                            <strong>Sunday:</strong> Closed
-                        </p>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <h5><i class="fas fa-phone text-primary me-2"></i>Phone Numbers</h5>
-                        <p class="ms-4">
-                            <strong>Main Office:</strong>+263 7 89927925<br>
-                            <strong>Admissions:</strong> +263 7 89927925<br>
-                            <strong>Accounts:</strong> +263 7 89927925
-                        </p>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <h5><i class="fas fa-envelope text-primary me-2"></i>Email Addresses</h5>
-                        <p class="ms-4">
-                            <strong>General Inquiries:</strong> info@topgrade.edu<br>
-                            <strong>Admissions:</strong> admissions@topgrade.edu<br>
-                            <strong>Accounts:</strong> accounts@topgrade.edu
-                        </p>
-                    </div>
-                    
-                    <div class="mt-5">
-                        <h5 class="text-primary">Emergency Contact</h5>
-                        <div class="alert alert-warning">
-                            <p class="mb-0"><i class="fas fa-exclamation-circle me-2"></i>For emergencies during school hours, call: <strong>+263 7 89927925</strong></p>
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <h5><i class="fas fa-map-marker-alt text-warning me-2"></i>Address</h5>
+                            <p class="ms-4"> 2334 Golden Heights <br>Education City<br>Shamva, Zimbabwe</p>
                         </div>
+                        
+                        <div class="mb-4">
+                            <h5><i class="fas fa-clock text-warning me-2"></i>Office Hours</h5>
+                            <p class="ms-4">
+                                <strong>Monday - Friday:</strong> 7:30 AM - 4:00 PM<br>
+                                <strong>Saturday:</strong> 9:00 AM - 12:00 PM<br>
+                                <strong>Sunday:</strong> Closed
+                            </p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5><i class="fas fa-phone text-warning me-2"></i>Phone Numbers</h5>
+                            <p class="ms-4">
+                                <strong>Main Office:</strong>+263 7 89927925<br>
+                                <strong>Admissions:</strong> +263 7 89927925<br>
+                                <strong>Accounts:</strong> +263 7 89927925
+                            </p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5><i class="fas fa-envelope text-warning me-2"></i>Email Addresses</h5>
+                            <p class="ms-4">
+                                <strong>General Inquiries:</strong> info@topgrade.edu<br>
+                                <strong>Admissions:</strong> admissions@topgrade.edu<br>
+                                <strong>Accounts:</strong> accounts@topgrade.edu
+                            </p>
+                        </div>
+                        
+                        <div class="mt-5">
+                            <h5 class="text-warning">Emergency Contact</h5>
+                            <div class="alert alert-warning" style="background-color: rgba(217, 119, 6, 0.15); border-color: #d97706; color: #fed7aa;">
+                                <p class="mb-0"><i class="fas fa-exclamation-circle me-2"></i>For emergencies during school hours, call: <strong>+263 7 89927925</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="col-md-7 mb-4">
+                <div class="card h-100">
+                    <div class="card-header text-white">
+                        <h4 class="mb-0">Send Us a Message</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="{% url 'school:contact_submit' %}">
+                            {% csrf_token %}
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Your Name *</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Your Email *</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Phone Number *</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="child_age" class="form-label">Child's Age/Grade (Optional)</label>
+                                        <input type="text" class="form-control" id="child_age" name="child_age" placeholder="e.g., 5 years or Grade 1">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Subject</label>
+                                <select class="form-select" id="subject" name="subject">
+                                    <option value="">Select a subject</option>
+                                    <option value="admissions">Admissions Inquiry</option>
+                                    <option value="fees">Fee Payment Query</option>
+                                    <option value="academic">Academic Matters</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="feedback">Feedback/Suggestion</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Your Message *</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required placeholder="Please type your message here..."></textarea>
+                            </div>
+                            
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                                <label class="form-check-label" for="newsletter">
+                                    Subscribe to our newsletter for updates and announcements
+                                </label>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </button>
+                                <button type="reset" class="btn btn-outline-secondary btn-lg ms-2">
+                                    <i class="fas fa-redo me-2"></i>Clear Form
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Contact Form -->
-        <div class="col-md-7 mb-4">
-            <div class="card h-100">
-                <div class="card-header bg-warning text-white">
-                    <h4 class="mb-0">Send Us a Message</h4>
-                </div>
-                <div class="card-body">
-                    <form method="post" action="{% url 'school:contact_submit' %}">
-                        {% csrf_token %}
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Your Name *</label>
-                                    <input type="text" class="form-control" id="name" name="name" required>
-                                </div>
+        <!-- Map Section -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header text-white">
+                        <h4 class="mb-0">Find Our Location</h4>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="map-placeholder">
+                            <div class="text-center">
+                                <i class="fas fa-map-marked-alt fa-4x mb-3"></i>
+                                <h5>School Location Map</h5>
+                                <p> 2334 Golden Heights , Shamva, Zimbabwe</p>
+                                <small>(Map integration available in production)</small>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Your Email *</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label">Phone Number *</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="child_age" class="form-label">Child's Age/Grade (Optional)</label>
-                                    <input type="text" class="form-control" id="child_age" name="child_age" placeholder="e.g., 5 years or Grade 1">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="subject" class="form-label">Subject</label>
-                            <select class="form-select" id="subject" name="subject">
-                                <option value="">Select a subject</option>
-                                <option value="admissions">Admissions Inquiry</option>
-                                <option value="fees">Fee Payment Query</option>
-                                <option value="academic">Academic Matters</option>
-                                <option value="general">General Inquiry</option>
-                                <option value="feedback">Feedback/Suggestion</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Your Message *</label>
-                            <textarea class="form-control" id="message" name="message" rows="5" required placeholder="Please type your message here..."></textarea>
-                        </div>
-                        
-                        <div class="form-check mb-4">
-                            <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
-                            <label class="form-check-label" for="newsletter">
-                                Subscribe to our newsletter for updates and announcements
-                            </label>
-                        </div>
-                        
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg">
-                                <i class="fas fa-paper-plane me-2"></i>Send Message
-                            </button>
-                            <button type="reset" class="btn btn-outline-secondary btn-lg ms-2">
-                                <i class="fas fa-redo me-2"></i>Clear Form
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Map Section -->
-    <div class="row mt-4">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header bg-success text-white">
-                    <h4 class="mb-0">Find Our Location</h4>
-                </div>
-                <div class="card-body p-0">
-                    <div class="map-placeholder" style="background: #f8f9fa; height: 300px; display: flex; align-items: center; justify-content: center;">
-                        <div class="text-center">
-                            <i class="fas fa-map-marked-alt fa-4x text-muted mb-3"></i>
-                            <h5>School Location Map</h5>
-                            <p class="text-muted"> 2334 Golden Heights , Shamva, Zimbabwe</p>
-                            <small class="text-muted">(Map integration available in production)</small>
                         </div>
                     </div>
                 </div>

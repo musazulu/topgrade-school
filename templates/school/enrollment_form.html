@@ -4,278 +4,321 @@
 {% block title %}Online Enrollment - Top Grade Education Centre{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h2 class="mb-0"><i class="fas fa-graduation-cap me-2"></i>Online Enrollment Application</h2>
+<style>
+    .enrollment-section {
+        background-color: #0a2463;
+        padding: 2rem 0;
+        color: #ffffff;
+    }
+    .enrollment-section h1,
+    .enrollment-section h2,
+    .enrollment-section h4,
+    .enrollment-section h5 {
+        color: #ffffff !important;
+    }
+    .enrollment-section .card {
+        background-color: #12347a;
+        border: none;
+        color: #e0e0ff;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+    .enrollment-section .card-header {
+        background-color: #1a3a8f !important;
+        border-radius: 10px 10px 0 0 !important;
+    }
+    .enrollment-section .alert-info {
+        background-color: rgba(59, 130, 246, 0.15);
+        border-color: #3b82f6;
+        color: #dbeafe;
+    }
+    .enrollment-section .form-label,
+    .enrollment-section .form-check-label {
+        color: #ffffff !important;
+    }
+    .enrollment-section .form-text {
+        color: #a0a0c0 !important;
+    }
+    .enrollment-section .text-danger {
+        color: #f87171 !important;
+    }
+    .enrollment-section .btn-primary {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: #0a2463;
+    }
+    .enrollment-section .btn-primary:hover {
+        background-color: #e0a800;
+        color: #0a2463;
+    }
+    .enrollment-section .btn-outline-secondary {
+        color: #ffc107 !important;
+        border-color: #ffc107 !important;
+    }
+    .enrollment-section .btn-outline-secondary:hover {
+        background-color: #ffc107 !important;
+        color: #0a2463 !important;
+    }
+    .section {
+        padding: 20px;
+        background-color: #1a3a8f;
+        border-radius: 8px;
+        border-left: 4px solid #ffc107;
+    }
+    .form-control, .form-select {
+        background-color: #1e40af;
+        border: 1px solid #3b82f6;
+        color: #ffffff;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .form-control:focus, .form-select:focus {
+        border-color: #ffc107;
+        box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+    }
+    .form-check-input:checked {
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
+</style>
+
+<div class="enrollment-section">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow">
+                    <div class="card-header text-white">
+                        <h2 class="mb-0"><i class="fas fa-graduation-cap me-2"></i>Online Enrollment Application</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info mb-4">
+                            <h5><i class="fas fa-info-circle me-2"></i>Application Instructions</h5>
+                            <ul class="mb-0">
+                                <li>Please fill out all required fields (*)</li>
+                                <li>Applications are reviewed within 3-5 business days</li>
+                                <li>You will receive an email confirmation upon submission</li>
+                                <li>Required documents can be submitted later</li>
+                            </ul>
+                        </div>
+
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            
+                            <!-- Student Information -->
+                            <div class="section mb-5">
+                                <h4 class="pb-2 mb-4">
+                                    <i class="fas fa-child me-2"></i>Student Information
+                                </h4>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">{{ form.first_name.label }} *</label>
+                                        {{ form.first_name }}
+                                        {% if form.first_name.errors %}
+                                        <div class="text-danger small">{{ form.first_name.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">{{ form.last_name.label }} *</label>
+                                        {{ form.last_name }}
+                                        {% if form.last_name.errors %}
+                                        <div class="text-danger small">{{ form.last_name.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">{{ form.date_of_birth.label }} *</label>
+                                        {{ form.date_of_birth }}
+                                        <div class="form-text">{{ form.date_of_birth.help_text }}</div>
+                                        {% if form.date_of_birth.errors %}
+                                        <div class="text-danger small">{{ form.date_of_birth.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">{{ form.gender.label }} *</label>
+                                        {{ form.gender }}
+                                        {% if form.gender.errors %}
+                                        <div class="text-danger small">{{ form.gender.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contact Information -->
+                            <div class="section mb-5">
+                                <h4 class="pb-2 mb-4">
+                                    <i class="fas fa-address-book me-2"></i>Parent/Guardian Information
+                                </h4>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">{{ form.parent_name.label }} *</label>
+                                        {{ form.parent_name }}
+                                        {% if form.parent_name.errors %}
+                                        <div class="text-danger small">{{ form.parent_name.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">{{ form.parent_relationship.label }} *</label>
+                                        {{ form.parent_relationship }}
+                                        <div class="form-text">{{ form.parent_relationship.help_text }}</div>
+                                        {% if form.parent_relationship.errors %}
+                                        <div class="text-danger small">{{ form.parent_relationship.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">{{ form.email.label }} *</label>
+                                        {{ form.email }}
+                                        {% if form.email.errors %}
+                                        <div class="text-danger small">{{ form.email.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">{{ form.phone.label }} *</label>
+                                        {{ form.phone }}
+                                        {% if form.phone.errors %}
+                                        <div class="text-danger small">{{ form.phone.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">{{ form.address.label }} *</label>
+                                    {{ form.address }}
+                                    {% if form.address.errors %}
+                                    <div class="text-danger small">{{ form.address.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <!-- Academic Information -->
+                            <div class="section mb-5">
+                                <h4 class="pb-2 mb-4">
+                                    <i class="fas fa-school me-2"></i>Academic Information
+                                </h4>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">{{ form.grade_applying_for.label }} *</label>
+                                        {{ form.grade_applying_for }}
+                                        {% if form.grade_applying_for.errors %}
+                                        <div class="text-danger small">{{ form.grade_applying_for.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">{{ form.previous_grade.label }}</label>
+                                        {{ form.previous_grade }}
+                                        <div class="form-text">{{ form.previous_grade.help_text }}</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">{{ form.previous_school.label }}</label>
+                                    {{ form.previous_school }}
+                                    <div class="form-text">{{ form.previous_school.help_text }}</div>
+                                </div>
+                            </div>
+
+                            <!-- Special Information -->
+                            <div class="section mb-5">
+                                <h4 class="pb-2 mb-4">
+                                    <i class="fas fa-heartbeat me-2"></i>Special Information
+                                </h4>
+                                <div class="mb-3">
+                                    <label class="form-label">{{ form.special_needs.label }}</label>
+                                    {{ form.special_needs }}
+                                    <div class="form-text">{{ form.special_needs.help_text }}</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">{{ form.additional_notes.label }}</label>
+                                    {{ form.additional_notes }}
+                                    <div class="form-text">{{ form.additional_notes.help_text }}</div>
+                                </div>
+                            </div>
+
+                            <!-- Documents -->
+                            <div class="section mb-5">
+                                <h4 class="pb-2 mb-4">
+                                    <i class="fas fa-file-alt me-2"></i>Documents Checklist
+                                </h4>
+                                <div class="alert alert-warning" style="background-color: rgba(217, 119, 6, 0.15); border-color: #d97706; color: #fed7aa;">
+                                    <p class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>
+                                        These documents are required but can be submitted later. Please indicate which documents you will provide.
+                                    </p>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <div class="form-check">
+                                            {{ form.birth_certificate_provided }}
+                                            <label class="form-check-label" for="{{ form.birth_certificate_provided.id_for_label }}">
+                                                {{ form.birth_certificate_provided.label }}
+                                            </label>
+                                        </div>
+                                        <div class="form-text">{{ form.birth_certificate_provided.help_text }}</div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="form-check">
+                                            {{ form.previous_report_provided }}
+                                            <label class="form-check-label" for="{{ form.previous_report_provided.id_for_label }}">
+                                                {{ form.previous_report_provided.label }}
+                                            </label>
+                                        </div>
+                                        <div class="form-text">{{ form.previous_report_provided.help_text }}</div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="form-check">
+                                            {{ form.immunization_provided }}
+                                            <label class="form-check-label" for="{{ form.immunization_provided.id_for_label }}">
+                                                {{ form.immunization_provided.label }}
+                                            </label>
+                                        </div>
+                                        <div class="form-text">{{ form.immunization_provided.help_text }}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Terms and Submit -->
+                            <div class="border-top pt-4" style="border-color: #3b82f6 !important;">
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="terms" required>
+                                    <label class="form-check-label" for="terms">
+                                        I certify that the information provided is true and accurate to the best of my knowledge.
+                                        I understand that providing false information may result in application rejection.
+                                    </label>
+                                </div>
+                                
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <a href="{% url 'school:home' %}" class="btn btn-outline-secondary me-md-2">
+                                        <i class="fas fa-times me-1"></i> Cancel
+                                    </a>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-paper-plane me-1"></i> Submit Application
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div class="alert alert-info mb-4">
-                        <h5><i class="fas fa-info-circle me-2"></i>Application Instructions</h5>
-                        <ul class="mb-0">
-                            <li>Please fill out all required fields (*)</li>
-                            <li>Applications are reviewed within 3-5 business days</li>
-                            <li>You will receive an email confirmation upon submission</li>
-                            <li>Required documents can be submitted later</li>
+                
+                <!-- Important Information Sidebar -->
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h5><i class="fas fa-question-circle text-warning me-2"></i>Need Help?</h5>
+                        <p class="mb-2">Contact the admissions office:</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-phone me-2"></i>Phone: (+263) 7899 27925</li>
+                            <li><i class="fas fa-envelope me-2"></i>Email: admissions@topgrade.edu</li>
+                            <li><i class="fas fa-clock me-2"></i>Office Hours: Mon-Fri, 8AM-4PM</li>
                         </ul>
                     </div>
-
-                    <form method="post" novalidate>
-                        {% csrf_token %}
-                        
-                        <!-- Student Information -->
-                        <div class="section mb-5">
-                            <h4 class="border-bottom pb-2 mb-4 text-primary">
-                                <i class="fas fa-child me-2"></i>Student Information
-                            </h4>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">{{ form.first_name.label }} *</label>
-                                    {{ form.first_name }}
-                                    {% if form.first_name.errors %}
-                                    <div class="text-danger small">{{ form.first_name.errors }}</div>
-                                    {% endif %}
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">{{ form.last_name.label }} *</label>
-                                    {{ form.last_name }}
-                                    {% if form.last_name.errors %}
-                                    <div class="text-danger small">{{ form.last_name.errors }}</div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">{{ form.date_of_birth.label }} *</label>
-                                    {{ form.date_of_birth }}
-                                    <div class="form-text">{{ form.date_of_birth.help_text }}</div>
-                                    {% if form.date_of_birth.errors %}
-                                    <div class="text-danger small">{{ form.date_of_birth.errors }}</div>
-                                    {% endif %}
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">{{ form.gender.label }} *</label>
-                                    {{ form.gender }}
-                                    {% if form.gender.errors %}
-                                    <div class="text-danger small">{{ form.gender.errors }}</div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Contact Information -->
-                        <div class="section mb-5">
-                            <h4 class="border-bottom pb-2 mb-4 text-primary">
-                                <i class="fas fa-address-book me-2"></i>Parent/Guardian Information
-                            </h4>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">{{ form.parent_name.label }} *</label>
-                                    {{ form.parent_name }}
-                                    {% if form.parent_name.errors %}
-                                    <div class="text-danger small">{{ form.parent_name.errors }}</div>
-                                    {% endif %}
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">{{ form.parent_relationship.label }} *</label>
-                                    {{ form.parent_relationship }}
-                                    <div class="form-text">{{ form.parent_relationship.help_text }}</div>
-                                    {% if form.parent_relationship.errors %}
-                                    <div class="text-danger small">{{ form.parent_relationship.errors }}</div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">{{ form.email.label }} *</label>
-                                    {{ form.email }}
-                                    {% if form.email.errors %}
-                                    <div class="text-danger small">{{ form.email.errors }}</div>
-                                    {% endif %}
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">{{ form.phone.label }} *</label>
-                                    {{ form.phone }}
-                                    {% if form.phone.errors %}
-                                    <div class="text-danger small">{{ form.phone.errors }}</div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label">{{ form.address.label }} *</label>
-                                {{ form.address }}
-                                {% if form.address.errors %}
-                                <div class="text-danger small">{{ form.address.errors }}</div>
-                                {% endif %}
-                            </div>
-                        </div>
-
-                        <!-- Academic Information -->
-                        <div class="section mb-5">
-                            <h4 class="border-bottom pb-2 mb-4 text-primary">
-                                <i class="fas fa-school me-2"></i>Academic Information
-                            </h4>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">{{ form.grade_applying_for.label }} *</label>
-                                    {{ form.grade_applying_for }}
-                                    {% if form.grade_applying_for.errors %}
-                                    <div class="text-danger small">{{ form.grade_applying_for.errors }}</div>
-                                    {% endif %}
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">{{ form.previous_grade.label }}</label>
-                                    {{ form.previous_grade }}
-                                    <div class="form-text">{{ form.previous_grade.help_text }}</div>
-                                </div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label">{{ form.previous_school.label }}</label>
-                                {{ form.previous_school }}
-                                <div class="form-text">{{ form.previous_school.help_text }}</div>
-                            </div>
-                        </div>
-
-                        <!-- Special Information -->
-                        <div class="section mb-5">
-                            <h4 class="border-bottom pb-2 mb-4 text-primary">
-                                <i class="fas fa-heartbeat me-2"></i>Special Information
-                            </h4>
-                            <div class="mb-3">
-                                <label class="form-label">{{ form.special_needs.label }}</label>
-                                {{ form.special_needs }}
-                                <div class="form-text">{{ form.special_needs.help_text }}</div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label">{{ form.additional_notes.label }}</label>
-                                {{ form.additional_notes }}
-                                <div class="form-text">{{ form.additional_notes.help_text }}</div>
-                            </div>
-                        </div>
-
-                        <!-- Documents -->
-                        <div class="section mb-5">
-                            <h4 class="border-bottom pb-2 mb-4 text-primary">
-                                <i class="fas fa-file-alt me-2"></i>Documents Checklist
-                            </h4>
-                            <div class="alert alert-warning">
-                                <p class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>
-                                    These documents are required but can be submitted later. Please indicate which documents you will provide.
-                                </p>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <div class="form-check">
-                                        {{ form.birth_certificate_provided }}
-                                        <label class="form-check-label" for="{{ form.birth_certificate_provided.id_for_label }}">
-                                            {{ form.birth_certificate_provided.label }}
-                                        </label>
-                                    </div>
-                                    <div class="form-text">{{ form.birth_certificate_provided.help_text }}</div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="form-check">
-                                        {{ form.previous_report_provided }}
-                                        <label class="form-check-label" for="{{ form.previous_report_provided.id_for_label }}">
-                                            {{ form.previous_report_provided.label }}
-                                        </label>
-                                    </div>
-                                    <div class="form-text">{{ form.previous_report_provided.help_text }}</div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="form-check">
-                                        {{ form.immunization_provided }}
-                                        <label class="form-check-label" for="{{ form.immunization_provided.id_for_label }}">
-                                            {{ form.immunization_provided.label }}
-                                        </label>
-                                    </div>
-                                    <div class="form-text">{{ form.immunization_provided.help_text }}</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Terms and Submit -->
-                        <div class="border-top pt-4">
-                            <div class="form-check mb-4">
-                                <input class="form-check-input" type="checkbox" id="terms" required>
-                                <label class="form-check-label" for="terms">
-                                    I certify that the information provided is true and accurate to the best of my knowledge.
-                                    I understand that providing false information may result in application rejection.
-                                </label>
-                            </div>
-                            
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <a href="{% url 'school:home' %}" class="btn btn-outline-secondary me-md-2">
-                                    <i class="fas fa-times me-1"></i> Cancel
-                                </a>
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-paper-plane me-1"></i> Submit Application
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
-            <!-- Important Information Sidebar -->
-            <div class="card mt-4">
-                <div class="card-body">
-                    <h5><i class="fas fa-question-circle text-primary me-2"></i>Need Help?</h5>
-                    <p class="mb-2">Contact the admissions office:</p>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-phone me-2"></i>Phone: (+263) 7899 27925</li>
-                        <li><i class="fas fa-envelope me-2"></i>Email: admissions@topgrade.edu</li>
-                        <li><i class="fas fa-clock me-2"></i>Office Hours: Mon-Fri, 8AM-4PM</li>
-                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<style>
-.section {
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    border-left: 4px solid #04203f;
-}
-
-.form-control, .form-select {
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.form-control:focus, .form-select:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.form-check-input:checked {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.card {
-    border: none;
-    border-radius: 10px;
-}
-
-.card-header {
-    border-radius: 10px 10px 0 0 !important;
-}
-.card-text {
-    color: darkblue;
-}
-</style>
 
 <script>
 // Add form validation and date restriction
