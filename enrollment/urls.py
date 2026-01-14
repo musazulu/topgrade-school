@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+app_name = 'enrollment'  # in enrollment/urls.py
+
 
 urlpatterns = [
     path('', views.enrollment_info, name='enrollment_info'),
