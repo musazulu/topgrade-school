@@ -1,5 +1,9 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Home - Top Grade
-Education Centre{% endblock %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Top Grade Education Centre{% endblock %}
+
+{% block content %}
 <!-- Hero Section -->
 <section class="hero-section py-5" style="background: #0a2463">
   <div class="container">
@@ -13,13 +17,13 @@ Education Centre{% endblock %} {% block content %}
         </p>
         <div class="d-flex gap-3">
           <a
-            href="{% url 'enrollment_info' %}"
+            href="{% url 'enrollment:enrollment_info' %}"
             class="btn btn-warning btn-lg px-4"
           >
             <i class="fas fa-user-graduate me-2"></i>Apply Now
           </a>
           <a
-            href="{% url 'contact' %}"
+            href="{% url 'school:contact' %}"
             class="btn btn-outline-light btn-lg px-4"
           >
             <i class="fas fa-phone me-2"></i>Contact Us
