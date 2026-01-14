@@ -4,67 +4,98 @@
 
 {% block content %}
 <style>
-    /* Light blue background for the entire page section */
+    /* Navy blue background for the entire section */
     .about-section {
-        background-color: #f0f8ff;
+        background-color: #0a2463; /* Deep navy blue */
         padding: 2rem 0;
+        color: #ffffff; /* White text by default */
     }
 
-    /* Dark blue for main heading */
+    /* White main heading with bold weight */
     .about-title {
-        color: #0d2b4e !important;
-        font-weight: 700;
+        color: #ffffff !important;
+        font-weight: 800;
         margin-bottom: 2.5rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
-    /* Dark blue for subheadings (Mission, Vision, Values) */
+    /* White subheadings (Mission, Vision, Values) */
     .section-heading {
-        color: #0d2b4e !important;
-        font-weight: 600;
+        color: #ffffff !important;
+        font-weight: 700;
         margin-top: 1.5rem;
+        position: relative;
+        padding-bottom: 0.5rem;
     }
 
-    /* Improve paragraph readability */
-    .about-content p.lead {
-        color: #333;
-        line-height: 1.6;
-        font-size: 1.05rem;
+    .section-heading::after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 3px;
+        background: #ffc107; /* Gold accent line */
+        margin-top: 0.5rem;
     }
 
-    /* Style cards with subtle shadow and rounded corners */
+    /* Improve paragraph readability with light text */
+    .about-content p.lead,
+    .about-section p.lead {
+        color: #e0e0ff;
+        line-height: 1.7;
+        font-size: 1.1rem;
+        opacity: 0.95;
+    }
+
+    /* Style cards with dark navy background and white text */
     .value-card {
         border: none;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        transition: transform 0.2s ease;
-        background-color: #ffffff;
+        border-radius: 10px;
+        background-color: #12347a; /* Slightly lighter navy */
+        color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 1rem;
     }
 
     .value-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        transform: translateY(-4px);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.4);
     }
 
-    /* Dark blue for value titles inside cards */
+    /* White value titles with gold checkmark */
     .value-title {
-        color: #0d2b4e !important;
-        font-weight: 600;
+        color: #ffffff !important;
+        font-weight: 700;
         display: flex;
         align-items: center;
+        font-size: 1.1rem;
     }
 
     .value-title::before {
         content: "✓";
-        color: #ffc107;
-        margin-right: 8px;
+        color: #ffc107; /* Gold checkmark */
+        margin-right: 10px;
         font-weight: bold;
+        font-size: 1.3rem;
     }
 
-    /* Remove default yellow and use cleaner checkmark via pseudo-element */
+    /* Lighter text for card descriptions */
     .card-text {
-        color: #444;
+        color: #d0d0ff !important;
         margin-bottom: 0;
         font-size: 0.95rem;
+        opacity: 0.9;
+    }
+
+    /* Ensure links/buttons remain visible if any */
+    .btn-outline-primary {
+        color: #ffffff !important;
+        border-color: #ffc107 !important;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #ffc107 !important;
+        color: #0a2463 !important;
     }
 </style>
 
