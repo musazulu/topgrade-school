@@ -3,70 +3,127 @@
 {% block title %}Application Submitted - Top Grade Education Centre{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card shadow text-center">
-                <div class="card-body p-5">
-                    <div class="mb-4">
-                        <div class="circle-icon mx-auto bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+<style>
+    .success-section {
+        background-color: #0a2463;
+        padding: 2rem 0;
+        color: #ffffff;
+    }
+    .success-section .card {
+        background-color: #12347a;
+        border: none;
+        color: #e0e0ff;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+    .success-section h1,
+    .success-section h4,
+    .success-section h5 {
+        color: #ffffff !important;
+    }
+    .success-section .text-success {
+        color: #4ade80 !important;
+    }
+    .success-section .alert-success {
+        background-color: rgba(22, 163, 74, 0.15);
+        border-color: #16a34a;
+        color: #dcfce7;
+    }
+    .success-section .alert-info {
+        background-color: rgba(59, 130, 246, 0.15);
+        border-color: #3b82f6;
+        color: #dbeafe;
+    }
+    .success-section .text-muted {
+        color: #a0a0c0 !important;
+    }
+    .success-section .btn-primary {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: #0a2463;
+    }
+    .success-section .btn-primary:hover {
+        background-color: #e0a800;
+        color: #0a2463;
+    }
+    .success-section .btn-outline-primary {
+        color: #ffc107 !important;
+        border-color: #ffc107 !important;
+    }
+    .success-section .btn-outline-primary:hover {
+        background-color: #ffc107 !important;
+        color: #0a2463 !important;
+    }
+    .circle-icon {
+        width: 100px;
+        height: 100px;
+        background-color: #16a34a;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 30px;
+    }
+</style>
+
+<div class="success-section">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow text-center">
+                    <div class="card-body p-5">
+                        <div class="circle-icon">
                             <i class="fas fa-check fa-3x"></i>
                         </div>
-                    </div>
-                    
-                    <h1 class="display-5 text-success mb-3">Application Submitted Successfully!</h1>
-                    
-                    <div class="alert alert-success mb-4">
-                        <h4><i class="fas fa-envelope me-2"></i>Confirmation Email Sent</h4>
-                        <p class="mb-0">We have sent a confirmation email to <strong>{{ email }}</strong> with your application details.</p>
-                    </div>
-                    
-                    <div class="card mb-4">
-                        <div class="card-header bg-light">
-                            <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>What Happens Next?</h5>
+                        
+                        <h1 class="display-5 mb-3">Application Submitted Successfully!</h1>
+                        
+                        <div class="alert alert-success mb-4">
+                            <h4><i class="fas fa-envelope me-2"></i>Confirmation Email Sent</h4>
+                            <p class="mb-0">We have sent a confirmation email to <strong>{{ email }}</strong> with your application details.</p>
                         </div>
-                        <div class="card-body text-start">
-                            <ol class="mb-0">
-                                <li class="mb-2">Your application will be reviewed within <strong>3-5 business days</strong></li>
-                                <li class="mb-2">You will receive an email update on your application status</li>
-                                <li class="mb-2">If approved, you'll receive enrollment instructions and fee details</li>
-                                <li>You may be contacted for additional information if needed</li>
-                            </ol>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header bg-light" style="background-color: #1e3a8a !important;">
+                                <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>What Happens Next?</h5>
+                            </div>
+                            <div class="card-body text-start">
+                                <ol class="mb-0">
+                                    <li class="mb-2">Your application will be reviewed within <strong>3-5 business days</strong></li>
+                                    <li class="mb-2">You will receive an email update on your application status</li>
+                                    <li class="mb-2">If approved, you'll receive enrollment instructions and fee details</li>
+                                    <li>You may be contacted for additional information if needed</li>
+                                </ol>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="alert alert-info text-start">
-                        <h5><i class="fas fa-clipboard-check me-2"></i>Important Reminders</h5>
-                        <ul class="mb-0">
-                            <li>Keep your application reference number: <strong>{{ application_id }}</strong></li>
-                            <li>Prepare the required documents for submission</li>
-                            <li>Check your email regularly for updates</li>
-                            <li>Contact admissions if you have any questions</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="mt-4">
-                        <p class="text-muted">Application ID: <strong>{{ application_id }}</strong></p>
-                        <p class="text-muted">Submission Date: {{ submission_date }}</p>
-                    </div>
-                    
-                    <div class="mt-5">
-                        <a href="{% url 'home' %}" class="btn btn-primary me-3">
-                            <i class="fas fa-home me-1"></i> Return to Homepage
-                        </a>
-                        <a href="{% url 'contact' %}" class="btn btn-outline-primary">
-                            <i class="fas fa-question-circle me-1"></i> Contact Admissions
-                        </a>
+                        
+                        <div class="alert alert-info text-start">
+                            <h5><i class="fas fa-clipboard-check me-2"></i>Important Reminders</h5>
+                            <ul class="mb-0">
+                                <li>Keep your application reference number: <strong>{{ application_id }}</strong></li>
+                                <li>Prepare the required documents for submission</li>
+                                <li>Check your email regularly for updates</li>
+                                <li>Contact admissions if you have any questions</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <p class="text-muted">Application ID: <strong>{{ application_id }}</strong></p>
+                            <p class="text-muted">Submission Date: {{ submission_date }}</p>
+                        </div>
+                        
+                        <div class="mt-5">
+                            <a href="{% url 'school:home' %}" class="btn btn-primary me-3">
+                                <i class="fas fa-home me-1"></i> Return to Homepage
+                            </a>
+                            <a href="{% url 'school:contact' %}" class="btn btn-outline-primary">
+                                <i class="fas fa-question-circle me-1"></i> Contact Admissions
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<style>
-.circle-icon {
-    margin-bottom: 30px;
-}
-</style>
 {% endblock %}

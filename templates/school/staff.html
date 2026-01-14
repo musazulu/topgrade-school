@@ -3,44 +3,76 @@
 {% block title %}Our Staff - Top Grade Education Centre{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <h1 class="text-center mb-5">Meet Our Staff</h1>
-    
-    {% if staff_by_type %}
-        {% for staff_type, staff_list in staff_by_type.items %}
-        <h3 class="text-primary mt-4">{{ staff_type }}</h3>
-        <div class="row">
-            {% for member in staff_list %}
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ member.name }}</h5>
-                        <h6 class="card-subtitle mb-2 text-primary">{{ member.position }}</h6>
-                        {% if member.grade_level %}
-                        <p class="card-text"><strong>Teaches:</strong> {{ member.grade_level }}</p>
-                        {% endif %}
-                        {% if member.qualifications %}
-                        <p class="card-text"><small>{{ member.qualifications|truncatewords:20 }}</small></p>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        {% endfor %}
-    {% else %}
-    <div class="alert alert-info text-center">
-        <h4>Staff information coming soon!</h4>
-        <p>We're currently updating our staff directory. Please check back later.</p>
-    </div>
-    {% endif %}
-</div>
 <style>
-    .text-primary mt-4{
-        color: darkblue;
+    .staff-section {
+        background-color: #0a2463;
+        padding: 2rem 0;
+        color: #ffffff;
     }
-    .card-text{
-        color: darkblue;
+    .staff-section h1,
+    .staff-section h3,
+    .staff-section h5,
+    .staff-section h6 {
+        color: #ffffff !important;
+    }
+    .staff-section .card {
+        background-color: #12347a;
+        border: none;
+        color: #e0e0ff;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    .staff-section .card-title {
+        color: #ffffff !important;
+        font-weight: 600;
+    }
+    .staff-section .card-subtitle {
+        color: #ffc107 !important;
+    }
+    .staff-section .card-text {
+        color: #d0d0ff !important;
+    }
+    .staff-section .alert {
+        background-color: #12347a;
+        border-color: #ffc107;
+        color: #ffffff;
+    }
+    .staff-section .alert h4 {
+        color: #ffc107;
     }
 </style>
+
+<div class="staff-section">
+    <div class="container py-5">
+        <h1 class="text-center mb-5">Meet Our Staff</h1>
+        
+        {% if staff_by_type %}
+            {% for staff_type, staff_list in staff_by_type.items %}
+            <h3 class="mt-4">{{ staff_type }}</h3>
+            <div class "row">
+                {% for member in staff_list %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ member.name }}</h5>
+                            <h6 class="card-subtitle mb-2">{{ member.position }}</h6>
+                            {% if member.grade_level %}
+                            <p class="card-text"><strong>Teaches:</strong> {{ member.grade_level }}</p>
+                            {% endif %}
+                            {% if member.qualifications %}
+                            <p class="card-text"><small>{{ member.qualifications|truncatewords:20 }}</small></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        {% else %}
+        <div class="alert alert-info text-center">
+            <h4>Staff information coming soon!</h4>
+            <p>We're currently updating our staff directory. Please check back later.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

@@ -3,64 +3,107 @@
 {% block title %}Subjects - Top Grade Education Centre{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <h1 class="text-center mb-5">Subjects We Offer</h1>
-    
-    {% if not has_subjects %}
-    <div class="alert alert-warning">
-        <h4>⚠️ No Subjects in Database</h4>
-        <p>Subjects are currently hardcoded. Add subjects through the Django admin panel.</p>
-        <a href="/admin/school/subject/add/" class="btn btn-primary">Add Subjects</a>
-    </div>
-    {% endif %}
-    
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            {% if subjects_by_category %}
-                {% for category, subjects_list in subjects_by_category.items %}
-                <div class="card mb-4">
-                    <div class="card-header 
-                        {% if category == 'Core Subject' %}bg-primary text-white
-                        {% elif category == 'Foundation Subject' %}bg-warning text-white
-                        {% else %}bg-success text-white{% endif %}">
-                        <h4 class="mb-0">{{ category }}</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            {% for subject in subjects_list %}
-                            <div class="col-md-6 mb-3">
-                                <div class="d-flex align-items-center">
-                                    <div class="rounded-circle p-3 me-3 
-                                        {% if category == 'Core Subject' %}bg-light-blue
-                                        {% elif category == 'Foundation Subject' %}bg-light-warning
-                                        {% else %}bg-light-success{% endif %}">
-                                        <i class="{{ subject.icon_class|default:'fas fa-book' }} fa-2x 
-                                            {% if category == 'Core Subject' %}text-primary
-                                            {% elif category == 'Foundation Subject' %}text-warning
-                                            {% else %}text-success{% endif %}"></i>
-                                    </div>
-                                    <div>
-                                        <h5>{{ subject.name }}</h5>
-                                        <p class="text-muted mb-0">{{ subject.description|default:"No description available" }}</p>
+<style>
+    .subjects-section {
+        background-color: #0a2463;
+        padding: 2rem 0;
+        color: #ffffff;
+    }
+    .subjects-section h1,
+    .subjects-section h4,
+    .subjects-section h5 {
+        color: #ffffff !important;
+    }
+    .subjects-section .card-header.bg-primary { background-color: #1a3a8f !important; }
+    .subjects-section .card-header.bg-warning { background-color: #d97706 !important; }
+    .subjects-section .card-header.bg-success { background-color: #166534 !important; }
+    .subjects-section .card {
+        background-color: #12347a;
+        border: none;
+        color: #e0e0ff;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    .subjects-section .text-muted {
+        color: #b0b0d0 !important;
+    }
+    .subjects-section .alert-warning {
+        background-color: #12347a;
+        border-color: #d97706;
+        color: #ffd580;
+    }
+    .subjects-section .btn-primary {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: #0a2463;
+    }
+    .subjects-section .btn-primary:hover {
+        background-color: #e0a800;
+        color: #0a2463;
+    }
+
+    /* Fallback colors */
+    .bg-light-blue { background-color: #1e3a8a !important; }
+    .bg-light-warning { background-color: #7c2d12 !important; }
+    .bg-light-success { background-color: #14532d !important; }
+    .text-primary { color: #60a5fa !important; }
+    .text-warning { color: #fbbf24 !important; }
+    .text-success { color: #4ade80 !important; }
+</style>
+
+<div class="subjects-section">
+    <div class="container py-5">
+        <h1 class="text-center mb-5">Subjects We Offer</h1>
+        
+        {% if not has_subjects %}
+        <div class="alert alert-warning">
+            <h4>⚠️ No Subjects in Database</h4>
+            <p>Subjects are currently hardcoded. Add subjects through the Django admin panel.</p>
+            <a href="/admin/school/subject/add/" class="btn btn-primary">Add Subjects</a>
+        </div>
+        {% endif %}
+        
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% if subjects_by_category %}
+                    {% for category, subjects_list in subjects_by_category.items %}
+                    <div class="card mb-4">
+                        <div class="card-header 
+                            {% if category == 'Core Subject' %}bg-primary text-white
+                            {% elif category == 'Foundation Subject' %}bg-warning text-white
+                            {% else %}bg-success text-white{% endif %}">
+                            <h4 class="mb-0">{{ category }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                {% for subject in subjects_list %}
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="rounded-circle p-3 me-3 
+                                            {% if category == 'Core Subject' %}bg-light-blue
+                                            {% elif category == 'Foundation Subject' %}bg-light-warning
+                                            {% else %}bg-light-success{% endif %}">
+                                            <i class="{{ subject.icon_class|default:'fas fa-book' }} fa-2x 
+                                                {% if category == 'Core Subject' %}text-primary
+                                                {% elif category == 'Foundation Subject' %}text-warning
+                                                {% else %}text-success{% endif %}"></i>
+                                        </div>
+                                        <div>
+                                            <h5>{{ subject.name }}</h5>
+                                            <p class="text-muted mb-0">{{ subject.description|default:"No description available" }}</p>
+                                        </div>
                                     </div>
                                 </div>
+                                {% endfor %}
                             </div>
-                            {% endfor %}
                         </div>
                     </div>
-                </div>
-                {% endfor %}
-            {% else %}
-                <!-- Fallback to hardcoded subjects if database is empty -->
-                {% include 'school/subjects_fallback.html' %}
-            {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <!-- Fallback to hardcoded subjects if database is empty -->
+                    {% include 'school/subjects_fallback.html' %}
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
-
-<style>
-.bg-light-blue { background-color: #e3f2fd; }
-.bg-light-warning { background-color: #fff3cd; }
-.bg-light-success { background-color: #d1e7dd; }
-</style>
 {% endblock %}
