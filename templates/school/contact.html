@@ -63,7 +63,7 @@
                     <h4 class="mb-0">Send Us a Message</h4>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{% url 'contact_submit' %}">
+                    <form method="post" action="{% url 'school:contact_submit' %}">
                         {% csrf_token %}
                         
                         <div class="row">
