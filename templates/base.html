@@ -22,10 +22,9 @@
     {% block extra_css %}{% endblock %}
   </head>
   <style>
-    .text-primary fw-bold{
+    .text-primary fw-bold {
       color: darkblue;
     }
-
   </style>
   <body>
     <!-- Navigation -->
@@ -74,6 +73,11 @@
               <a class="nav-link" href="{% url 'subjects' %}">Subjects</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{% url 'school:uniforms' %}"
+                >Uniforms</a
+              >
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{% url 'enrollment_info' %}">Enroll</a>
             </li>
             <li class="nav-item">
@@ -102,7 +106,7 @@
             <h5>Contact Info</h5>
             <p>
               <i class="fas fa-map-marker-alt me-2"></i>2334 Golden Heights,
-               Shamva, Zimbabwe
+              Shamva, Zimbabwe
             </p>
             <p><i class="fas fa-phone me-2"></i>(+263) 7899 27925</p>
             <p><i class="fas fa-envelope me-2"></i>info@topgrade.edu</p>
@@ -139,7 +143,6 @@
           <p>&copy; 2024 Top Grade Education Centre. All rights reserved.</p>
         </div>
       </div>
-    
     </footer>
 
     <!-- Bootstrap JS -->

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}School Uniforms | Top Grade Education Centre{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row mb-4">
+    <div class="col text-center">
+      <h1 class="text-primary fw-bold">School Uniforms</h1>
+      <p class="lead">Our students wear uniforms that reflect pride, discipline, and school spirit.</p>
+    </div>
+  </div>
+
+  <!-- Image Grid -->
+  <div class="row g-4">
+    <!-- Image 1: Tracksuit -->
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <img src="{% static 'images/uniforms/tracksuit.jpg' %}" class="card-img-top" alt="Blue Tracksuit Uniform">
+        <div class="card-body">
+          <h5 class="card-title">Sports Uniform</h5>
+          <p class="card-text">Comfortable blue tracksuit with school emblem — perfect for PE and outdoor activities.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image 2: Formal Blazer -->
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <img src="{% static 'images/uniforms/blazer.jpg' %}" class="card-img-top" alt="Formal Blazer Uniform">
+        <div class="card-body">
+          <h5 class="card-title">Formal Uniform</h5>
+          <p class="card-text">Navy blazer, khaki shorts, striped tie, and wide-brimmed hat — worn for assemblies and special events.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image 3: Class Photo -->
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <img src="{% static 'images/uniforms/class.jpg' %}" class="card-img-top" alt="Students in Uniform">
+        <div class="card-body">
+          <h5 class="card-title">Classroom Uniform</h5>
+          <p class="card-text">All students proudly wear their uniforms daily — fostering unity and focus in learning.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional Info -->
+  <div class="row mt-5">
+    <div class="col">
+      <div class="alert alert-info">
+        <h5>Uniform Guidelines</h5>
+        <ul>
+          <li>All uniforms must be clean and well-maintained.</li>
+          <li>Shoes should be black or white, polished and laced properly.</li>
+          <li>Hats are mandatory during outdoor activities and assemblies.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to School Link -->
+  <div class="row mt-4">
+    <div class="col text-center">
+      <a href="{% url 'school:about' %}" class="btn btn-outline-primary">Back to About Us</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
