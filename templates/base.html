@@ -65,7 +65,7 @@
               <a class="nav-link" href="{% url 'enrollment:apply' %}">Enroll</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'payments:info' %}">Pay Fees</a>
+              <a class="nav-link" href="{% url 'payments:payment_info' %}">Pay Fees</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'school:contact' %}">Contact</a>
@@ -99,10 +99,10 @@
             <h5>Quick Links</h5>
             <ul class="list-unstyled">
               <li>
-                <a href="{% url 'enrollment:info' %}" class="text-white text-decoration-none">How to Apply</a>
+                <a href="{% url 'enrollment:enrollment_info' %}" class="text-white text-decoration-none">How to Apply</a>
               </li>
               <li>
-                <a href="{% url 'payments:fees' %}" class="text-white text-decoration-none">Fee Structure</a>
+                <a href="{% url 'payments:fee_structure' %}" class="text-white text-decoration-none">Fee Structure</a>
               </li>
               <li>
                 <a href="{% url 'school:contact' %}" class="text-white text-decoration-none">Contact Us</a>
