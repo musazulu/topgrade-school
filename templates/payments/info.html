@@ -1,140 +1,232 @@
-{% extends 'base.html' %} {% block title %}Payments - Top Grade Education
-Centre{% endblock %} {% block content %}
-<div class="container py-5">
-  <h1 class="text-center mb-5">School Fee Payments</h1>
+{% extends 'base.html' %}
 
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <!-- Payment Options -->
-      <div class="card mb-4">
-        <div class="card-header bg-primary text-white">
-          <h4 class="mb-0">Payment Options</h4>
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-6 mb-4">
-              <div class="card h-100 border-primary">
-                <div class="card-body text-center">
-                  <div class="mb-3">
-                    <i class="fas fa-university fa-4x text-primary"></i>
-                  </div>
-                  <h5 class="card-title">Bank Transfer</h5>
-                  <p class="card-text">
-                    Direct transfer to our school bank account
-                  </p>
-                  <a href="{% url 'payments:bank_details' %}" class="btn btn-outline-primary">View Bank Details</a>
-                  
+{% block title %}Payments - Top Grade Education Centre{% endblock %}
+
+{% block content %}
+<style>
+    .payments-section {
+        background-color: #0a2463;
+        padding: 2rem 0;
+        color: #ffffff;
+    }
+    .payments-section h1,
+    .payments-section h4,
+    .payments-section h5,
+    .payments-section h6 {
+        color: #ffffff !important;
+    }
+    .payments-section .card {
+        background-color: #12347a;
+        border: none;
+        color: #e0e0ff;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+    .payments-section .card-header.bg-primary {
+        background-color: #1a3a8f !important;
+    }
+    .payments-section .card-header.bg-success {
+        background-color: #166534 !important;
+    }
+    .payments-section .card-header.bg-warning {
+        background-color: #d97706 !important;
+    }
+    .payments-section .btn {
+        pointer-events: none;
+        opacity: 0.6;
+        background-color: #6b7280 !important;
+        border-color: #6b7280 !important;
+        color: #ffffff !important;
+    }
+    .payments-section .text-primary { color: #60a5fa !important; }
+    .payments-section .text-warning { color: #fbbf24 !important; }
+    .payments-section .alert-info {
+        background-color: rgba(59, 130, 246, 0.15);
+        border-color: #3b82f6;
+        color: #dbeafe;
+    }
+    .payments-section .alert-warning {
+        background-color: rgba(217, 119, 6, 0.15);
+        border-color: #d97706;
+        color: #fed7aa;
+    }
+    .fee-breakdown {
+        background-color: #1a3a8f;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-top: 1.5rem;
+    }
+    .fee-breakdown h5 {
+        color: #ffc107 !important;
+        margin-bottom: 1rem;
+    }
+    .fee-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #2d3748;
+    }
+    .fee-total {
+        font-weight: bold;
+        color: #ffc107 !important;
+        font-size: 1.1rem;
+    }
+</style>
+
+<div class="payments-section">
+    <div class="container py-5">
+        <h1 class="text-center mb-5">School Fee Payments</h1>
+
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <!-- Payment Options -->
+                <div class="card mb-4">
+                    <div class="card-header text-white">
+                        <h4 class="mb-0">Payment Options</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 border-primary">
+                                    <div class="card-body text-center">
+                                        <div class="mb-3">
+                                            <i class="fas fa-university fa-4x text-primary"></i>
+                                        </div>
+                                        <h5 class="card-title">Bank Transfer</h5>
+                                        <p class="card-text">
+                                            Direct transfer to our school bank account
+                                        </p>
+                                        <a href="#" class="btn btn-outline-warning">
+                                            Make Cash Payment
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 border-warning">
+                                    <div class="card-body text-center">
+                                        <div class="mb-3">
+                                            <i class="fas fa-money-bill-wave fa-4x text-warning"></i>
+                                        </div>
+                                        <h5 class="card-title">Cash Payment</h5>
+                                        <p class="card-text">
+                                            Pay at the school office during working hours
+                                        </p>
+                                        <a href="#" class="btn btn-outline-warning">
+                                            Make Cash Payment
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-4">
-              <div class="card h-100 border-warning">
-                <div class="card-body text-center">
-                  <div class="mb-3">
-                    <i class="fas fa-money-bill-wave fa-4x text-warning"></i>
-                  </div>
-                  <h5 class="card-title">Cash Payment</h5>
-                  <p class="card-text">
-                    Pay at the school office during working hours
-                  </p>
-                  <a href="{% url 'payments:pay_at_office' %}" class="btn btn-outline-warning">Pay at Office</a>
+
+                <!-- Fee Structure -->
+                <div class="card mb-4">
+                    <div class="card-header text-white">
+                        <h4 class="mb-0">Fee Structure</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Grade</th>
+                                        <th>Term 1</th>
+                                        <th>Term 2</th>
+                                        <th>Term 3</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Grade 1-3</strong></td>
+                                        <td>$325</td>
+                                        <td>$325</td>
+                                        <td>$325</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Grade 4-7</strong></td>
+                                        <td>$325</td>
+                                        <td>$325</td>
+                                        <td>$325</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Fee Breakdown -->
+                        <div class="fee-breakdown">
+                            <h5><i class="fas fa-receipt me-2"></i>Fee Breakdown (Per Term)</h5>
+                            <div class="fee-item">
+                                <span>Tuition Fees</span>
+                                <span>$225</span>
+                            </div>
+                            <div class="fee-item">
+                                <span>Food</span>
+                                <span>$35</span>
+                            </div>
+                            <div class="fee-item">
+                                <span>Transport</span>
+                                <span>$45</span>
+                            </div>
+                            <div class="fee-item fee-total">
+                                <span><strong>Total per Term</strong></span>
+                                <span><strong>$325</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-3">
+                            <h6><i class="fas fa-info-circle me-2"></i>Fee Information</h6>
+                            <ul class="mb-0">
+                                <li>All fees are per term and payable in advance</li>
+                                <li>Each grade or level has a specific stationary list, required every term</li>
+                                <li>Payment and Stationery list available upon request</li>
+                                <li>Fees include tuition and basic learning materials</li>
+                            </ul>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="#" class="btn btn-success">
+                                <i class="fas fa-file-invoice-dollar me-2"></i>View Detailed Fee Structure
+                            </a>
+                        </div>
+                    </div>
                 </div>
-              </div>
+
+                <!-- Payment Instructions -->
+                <div class="card">
+                    <div class="card-header text-white">
+                        <h4 class="mb-0">Payment Instructions</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5>For Bank Transfers:</h5>
+                        <ol>
+                            <li>Use student name as reference</li>
+                            <li>Email transfer proof to accounts@topgrade.edu</li>
+                            <li>Keep your transaction ID for verification</li>
+                            <li>Allow 24-48 hours for processing</li>
+                        </ol>
+
+                        <h5 class="mt-4">For Cash Payments:</h5>
+                        <ul>
+                            <li>Pay at the school office between 8 AM - 3 PM</li>
+                            <li>Bring student admission number</li>
+                            <li>Request official receipt</li>
+                            <li>Payments during working days</li>
+                        </ul>
+
+                        <div class="alert alert-warning mt-4">
+                            <h6>
+                                <i class="fas fa-exclamation-triangle me-2"></i>Important Notice
+                            </h6>
+                            <p class="mb-0">
+                                Late payments is greatly discouraged and incurs a penalty fee. Students with outstanding
+                                fees may not be allowed to attend classes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-
-      <!-- Fee Structure -->
-      <div class="card mb-4">
-        <div class="card-header bg-success text-white">
-          <h4 class="mb-0">Fee Structure</h4>
-        </div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-hover">
-              <thead class="table-light">
-                <tr>
-                  <th>Grade</th>
-                  <th>Term 1</th>
-                  <th>Term 2</th>
-                  <th>Term 3</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Grade 1-3</strong></td>
-                  <td>$325</td>
-                  <td>$325</td>
-                  <td>$325</td>
-                </tr>
-                <tr>
-                  <td><strong>Grade 4-7</strong></td>
-                  <td>$325</td>
-                  <td>$325</td>
-                  <td>$325</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="alert alert-info mt-3">
-            <h6><i class="fas fa-info-circle me-2"></i>Fee Information</h6>
-            <ul class="mb-0">
-              <li>All fees are per term and payable in advance</li>
-              <li>
-                Each grade or level has a specific stationary list ,required
-                every term
-              </li>
-              <li>Payment and Stationery list available upon request</li>
-              <li>Fees include tuition and basic learning materials</li>
-            </ul>
-          </div>
-          <div class="text-center mt-4">
-            <a
-              href="{% url 'payments:fee_structure' %}"
-              class="btn btn-success"
-            >
-              <i class="fas fa-file-invoice-dollar me-2"></i>View Detailed Fee
-              Structure
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Payment Instructions -->
-      <div class="card">
-        <div class="card-header bg-warning text-white">
-          <h4 class="mb-0">Payment Instructions</h4>
-        </div>
-        <div class="card-body">
-          <h5>For Bank Transfers:</h5>
-          <ol>
-            <li>Use student name as reference</li>
-            <li>Email transfer proof to accounts@topgrade.edu</li>
-            <li>Keep your transaction ID for verification</li>
-            <li>Allow 24-48 hours for processing</li>
-          </ol>
-
-          <h5 class="mt-4">For Cash Payments:</h5>
-          <ul>
-            <li>Pay at the school office between 8 AM - 3 PM</li>
-            <li>Bring student admission number</li>
-            <li>Request official receipt</li>
-            <li>payments during working days</li>
-          </ul>
-
-          <div class="alert alert-warning mt-4">
-            <h6>
-              <i class="fas fa-exclamation-triangle me-2"></i>Important Notice
-            </h6>
-            <p class="mb-0">
-              Late payments is greatly discouraged and incurs a penalty fee. Students with outstanding
-              fees may not be allowed to attend classes.
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
 {% endblock %}
