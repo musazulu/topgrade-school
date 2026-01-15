@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Enrollment Information - Top Grade Education Centre{% endblock %}
+{% block title %}School Fees Structure - Top Grade Education Centre{% endblock %}
 
 {% block content %}
 <style>
@@ -12,7 +12,6 @@
     }
     .fees-section h1,
     .fees-section h2,
-    .fees-section h3,
     .fees-section h4,
     .fees-section h5,
     .fees-section h6 {
@@ -72,16 +71,6 @@
         background-color: #ffc107 !important;
         color: #0a2463 !important;
     }
-    .fees-section .btn-warning {
-        background-color: #ffc107 !important;
-        border-color: #ffc107 !important;
-        color: #0a2463 !important;
-    }
-    .fees-section .btn-warning:hover {
-        background-color: #e0a800 !important;
-        border-color: #e0a800 !important;
-        color: #0a2463 !important;
-    }
     .hover-shadow:hover {
         box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4) !important;
     }
@@ -93,104 +82,22 @@
             <div class="col-lg-10 mx-auto">
                 <div class="card shadow">
                     <div class="card-header text-white">
-                        <h2 class="mb-0">
-                            <i class="fas fa-user-graduate me-2"></i>Enrollment Information & Fees Structure
-                        </h2>
+                        <h2 class="mb-0"><i class="fas fa-money-bill-wave me-2"></i>School Fees Structure - Academic Year 2024</h2>
                     </div>
-
                     <div class="card-body">
                         <!-- Important Notice -->
                         <div class="alert alert-warning mb-4">
                             <h5><i class="fas fa-exclamation-triangle me-2"></i>Important Notice</h5>
-                            <p class="mb-0">
-                                Applications are processed within 3–5 business days. Early enrollment is recommended as spaces are limited.
-                                Fees are payable per term (3 terms per year) and may change with prior notice.
-                            </p>
+                            <p class="mb-0">All fees are payable per term (3 terms per year). Fees are subject to change with prior notice. 
+                            Discounts available for siblings and early payments.</p>
                         </div>
 
-                        <!-- Enrollment Process -->
-                        <div class="mb-5">
-                            <h4 class="pb-2 mb-4">
-                                <i class="fas fa-route me-2"></i>Enrollment Process
-                            </h4>
-
-                            <div class="row g-4">
-                                <div class="col-md-6">
-                                    <div class="card h-100 hover-shadow">
-                                        <div class="card-header text-white">
-                                            <h5 class="mb-0"><i class="fas fa-check-circle me-2"></i>Step 1: Check Eligibility</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="mb-0">Children aged <strong>5–12 years</strong> are eligible for <strong>Grades 1–7</strong>.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="card h-100 hover-shadow">
-                                        <div class="card-header text-white">
-                                            <h5 class="mb-0"><i class="fas fa-file-signature me-2"></i>Step 2: Submit Application</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="mb-3">Fill out our online application form with all required information.</p>
-
-                                            <!-- KEEP LOGIC: Apply link stays correct -->
-                                            <a href="{% url 'enrollment:apply' %}" class="btn btn-warning">
-                                                <i class="fas fa-paper-plane me-2"></i>Apply Online Now
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="card h-100 hover-shadow">
-                                        <div class="card-header text-white">
-                                            <h5 class="mb-0"><i class="fas fa-chalkboard-teacher me-2"></i>Step 3: Interview & Assessment</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="mb-0">Schedule a meeting with our teachers for assessment and placement guidance.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="card h-100 hover-shadow">
-                                        <div class="card-header text-white">
-                                            <h5 class="mb-0"><i class="fas fa-money-check-alt me-2"></i>Step 4: Acceptance & Payment</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="mb-0">Complete fee payment to secure your child’s place.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Required Documents -->
-                        <div class="mb-5">
-                            <h4 class="pb-2 mb-4">
-                                <i class="fas fa-folder-open me-2"></i>Required Documents
-                            </h4>
-
-                            <div class="card">
-                                <div class="card-body">
-                                    <ul class="mb-0">
-                                        <li>Birth certificate (certified copy)</li>
-                                        <li>Previous school report (if applicable)</li>
-                                        <li>Immunization records</li>
-                                        <li>Parent/Guardian ID copy</li>
-                                        <li>Passport-sized photos (2 copies)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Fees Table (COPIED FROM YOUR FEES FILE) -->
+                        <!-- Fees Table -->
                         <div class="table-responsive mb-5">
                             <h4 class="pb-2 mb-4">
                                 <i class="fas fa-table me-2"></i>Termly Fees Structure (KES)
                             </h4>
-
+                            
                             <table class="table table-bordered table-hover">
                                 <thead class="table-dark">
                                     <tr>
@@ -278,7 +185,7 @@
                             </table>
                         </div>
 
-                        <!-- Additional Charges (COPIED) -->
+                        <!-- Additional Charges -->
                         <div class="row mb-5">
                             <div class="col-md-6">
                                 <div class="card h-100">
@@ -314,12 +221,12 @@
                             </div>
                         </div>
 
-                        <!-- Payment Schedule (COPIED) -->
+                        <!-- Payment Schedule -->
                         <div class="schedule-card mb-5">
                             <h4 class="pb-2 mb-4">
                                 <i class="fas fa-calendar-alt me-2"></i>Payment Schedule 2026
                             </h4>
-
+                            
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <div class="card h-100">
@@ -360,32 +267,75 @@
                             </div>
                         </div>
 
-                        <!-- Important Notes (KEEP ORIGINAL LOGIC + MESSAGE) -->
+                        <!-- Payment Methods -->
+                        <div class="payment-methods mb-5">
+                            <h4 class="pb-2 mb-4">
+                                <i class="fas fa-credit-card me-2"></i>Payment Methods
+                            </h4>
+                            
+                            <div class="row text-center">
+                                <div class="col-md-3 mb-3">
+                                    <a href="{% url 'payments:bank_details' %}" class="text-decoration-none">
+                                        <div class="p-3 border rounded h-100 hover-shadow">
+                                            <i class="fas fa-university fa-2x text-warning mb-2"></i>
+                                            <h6>Bank Transfer</h6>
+                                            <p class="small text-muted mb-0">Direct to school account</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="p-3 border rounded h-100">
+                                        <i class="fas fa-mobile-alt fa-2x text-success mb-2"></i>
+                                        <h6>M-Pesa</h6>
+                                        <p class="small text-muted mb-0">Paybill: 123456</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <a href="{% url 'payments:pay_at_office' %}" class="text-decoration-none">
+                                        <div class="p-3 border rounded h-100 hover-shadow">
+                                            <i class="fas fa-building fa-2x text-info mb-2"></i>
+                                            <h6>Cash at Office</h6>
+                                            <p class="small text-muted mb-0">Visit accounts office</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="p-3 border rounded h-100">
+                                        <i class="fas fa-credit-card fa-2x text-primary mb-2"></i>
+                                        <h6>Cheque</h6>
+                                        <p class="small text-muted mb-0">Payable to school name</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Important Information -->
                         <div class="alert alert-info">
-                            <h5><i class="fas fa-info-circle me-2"></i>Important Notes</h5>
+                            <h5><i class="fas fa-info-circle me-2"></i>Important Information</h5>
                             <ul class="mb-0">
-                                <li>Applications are processed within 3-5 business days</li>
-                                <li>Early enrollment is recommended as spaces are limited</li>
-                                <li>For inquiries, contact: admissions@topgrade.edu</li>
+                                <li>Fees must be paid in full at the beginning of each term</li>
+                                <li>No refunds after 2 weeks from term start</li>
+                                <li>Payment plans available upon request</li>
+                                <li>All fees include VAT where applicable</li>
+                                <li>Receipts issued within 24 hours of payment</li>
                             </ul>
                         </div>
 
-                        <!-- Actions -->
-                        <div class="mt-5 d-flex justify-content-between align-items-center flex-wrap gap-3">
+                        <!-- Contact & Actions -->
+                        <div class="mt-5 d-flex justify-content-between">
                             <div>
-                                <h6 class="mb-1"><i class="fas fa-headset me-2"></i>Need Assistance?</h6>
-                                <p class="mb-0">Admissions: admissions@topgrade.edu</p>
+                                <h6><i class="fas fa-headset me-2"></i>Need Assistance?</h6>
+                                <p class="mb-0">Accounts Department: (+263) 7899 27925 | accounts@topgrade.edu</p>
                             </div>
                             <div class="text-end">
-                                <a href="{% url 'enrollment:apply' %}" class="btn btn-primary me-2">
-                                    <i class="fas fa-user-graduate me-1"></i> Apply Now
+                                <a href="{% url 'payments:bank_details' %}" class="btn btn-primary me-2">
+                                    <i class="fas fa-university me-1"></i> Bank Details
                                 </a>
-                                <a href="{% url 'enrollment:check_status' %}" class="btn btn-outline-primary">
-                                    <i class="fas fa-search me-1"></i> Check Status
-                                </a>
+                                <button onclick="window.print()" class="btn btn-outline-primary">
+                                    <i class="fas fa-print me-1"></i> Print Fees
+                                </button>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
