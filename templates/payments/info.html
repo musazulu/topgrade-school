@@ -22,11 +22,8 @@ Centre{% endblock %} {% block content %}
                   <p class="card-text">
                     Direct transfer to our school bank account
                   </p>
-                  <a
-                    href="{% url 'payments:make_payment' %}"
-                    class="btn btn-outline-warning"
-                    >Make Cash Payment</a
-                  >
+                  <a href="{% url 'payments:bank_details' %}" class="btn btn-outline-primary">View Bank Details</a>
+                  
                 </div>
               </div>
             </div>
@@ -40,11 +37,7 @@ Centre{% endblock %} {% block content %}
                   <p class="card-text">
                     Pay at the school office during working hours
                   </p>
-                  <a
-                    href="{% url 'payments:make_payment' %}"
-                    class="btn btn-outline-warning"
-                    >Make Cash Payment</a
-                  >
+                  <a href="{% url 'payments:pay_at_office' %}" class="btn btn-outline-warning">Pay at Office</a>
                 </div>
               </div>
             </div>
@@ -127,7 +120,7 @@ Centre{% endblock %} {% block content %}
             <li>Pay at the school office between 8 AM - 3 PM</li>
             <li>Bring student admission number</li>
             <li>Request official receipt</li>
-            <li>No payments accepted after 3 PM</li>
+            <li>payments during working days</li>
           </ul>
 
           <div class="alert alert-warning mt-4">
@@ -135,7 +128,7 @@ Centre{% endblock %} {% block content %}
               <i class="fas fa-exclamation-triangle me-2"></i>Important Notice
             </h6>
             <p class="mb-0">
-              Late payments incur a 10% penalty fee. Students with outstanding
+              Late payments is greatly discouraged and incurs a penalty fee. Students with outstanding
               fees may not be allowed to attend classes.
             </p>
           </div>
