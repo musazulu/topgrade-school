@@ -8,9 +8,16 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', include('school.urls', namespace='school')),
-    path("enrollment/", include("enrollment.urls", namespace='enrollment')),
-    path("payments/", include("payments.urls", namespace='payments')),
+
+    path("", include(("school.urls", "school"), namespace="school")),
+
+    # Enrollment URLs
+    path("enrollment/", include(("enrollment.urls", "enrollment"), namespace="enrollment")),
+
+    # Payments URLs
+    path("payments/", include(("payments.urls", "payments"), namespace="payments")),
+
+    # Accounts URLs (no namespace shown in your code)
     path("accounts/", include("accounts.urls")),
 ]
 
