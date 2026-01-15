@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Enrollment Information - Top Grade Education Centre{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">Enrollment Information</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <h3 class="card-title text-primary mb-4">Enrollment Process</h3>
+                        
+                        <div class="mb-4">
+                            <h5>Step 1: Check Eligibility</h5>
+                            <p>Children aged 5-12 years are eligible for Grades 1-7.</p>
+                            
+                            <h5 class="mt-4">Step 2: Submit Application</h5>
+                            <p>Fill out our online application form with all required information.</p>
+                            <a href="{% url 'enrollment:apply' %}" class="btn btn-warning mt-2">Apply Online Now</a>
+                            
+                            <h5 class="mt-4">Step 3: Interview & Assessment</h5>
+                            <p>Schedule a meeting with our teachers for assessment.</p>
+                            
+                            <h5 class="mt-4">Step 4: Acceptance & Payment</h5>
+                            <p>Complete fee payment to secure your child's place.</p>
+                        </div>
+                        
+                        <div class="mt-5">
+                            <h4 class="text-primary">Required Documents:</h4>
+                            <ul>
+                                <li>Birth certificate (certified copy)</li>
+                                <li>Previous school report (if applicable)</li>
+                                <li>Immunization records</li>
+                                <li>Parent/Guardian ID copy</li>
+                                <li>Passport-sized photos (2 copies)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="alert alert-info mt-4">
+                            <h5><i class="fas fa-info-circle me-2"></i>Important Notes</h5>
+                            <ul class="mb-0">
+                                <li>Applications are processed within 3-5 business days</li>
+                                <li>Early enrollment is recommended as spaces are limited</li>
+                                <li>For inquiries, contact: admissions@topgrade.edu</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
