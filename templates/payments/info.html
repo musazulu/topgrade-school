@@ -1,227 +1,100 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Payments - Top Grade Education Centre{% endblock %}
+{% block title %}Enrollment Information - Top Grade Education Centre{% endblock %}
 
 {% block content %}
 <style>
-    .payments-section {
+    .enrollment-section {
         background-color: #0a2463;
         padding: 2rem 0;
         color: #ffffff;
     }
-    .payments-section h1,
-    .payments-section h4,
-    .payments-section h5,
-    .payments-section h6 {
+    .enrollment-section h1,
+    .enrollment-section h2,
+    .enrollment-section h3,
+    .enrollment-section h4,
+    .enrollment-section h5 {
         color: #ffffff !important;
     }
-    .payments-section .card {
+    .enrollment-section .card {
         background-color: #12347a;
         border: none;
         color: #e0e0ff;
         box-shadow: 0 6px 16px rgba(0,0,0,0.4);
     }
-    .payments-section .card-header.bg-primary {
+    .enrollment-section .card-header {
         background-color: #1a3a8f !important;
+        border-radius: 10px 10px 0 0 !important;
     }
-    .payments-section .card-header.bg-success {
-        background-color: #166534 !important;
+    .enrollment-section .btn-warning {
+        background-color: #ffc107 !important;
+        border-color: #ffc107 !important;
+        color: #0a2463 !important;
     }
-    .payments-section .card-header.bg-warning {
-        background-color: #d97706 !important;
+    .enrollment-section .btn-warning:hover {
+        background-color: #e0a800 !important;
+        color: #0a2463 !important;
     }
-    .payments-section .btn {
-        pointer-events: none;
-        opacity: 0.6;
-        background-color: #6b7280 !important;
-        border-color: #6b7280 !important;
-        color: #ffffff !important;
-    }
-    .payments-section .text-primary { color: #60a5fa !important; }
-    .payments-section .text-warning { color: #fbbf24 !important; }
-    .payments-section .alert-info {
+    .enrollment-section .alert-info {
         background-color: rgba(59, 130, 246, 0.15);
         border-color: #3b82f6;
         color: #dbeafe;
     }
-    .payments-section .alert-warning {
-        background-color: rgba(217, 119, 6, 0.15);
-        border-color: #d97706;
-        color: #fed7aa;
+    .enrollment-section ul {
+        padding-left: 1.2rem;
     }
-    .fee-breakdown {
-        background-color: #1a3a8f;
-        padding: 1.5rem;
-        border-radius: 8px;
-        margin-top: 1.5rem;
-    }
-    .fee-breakdown h5 {
-        color: #ffc107 !important;
-        margin-bottom: 1rem;
-    }
-    .fee-item {
-        display: flex;
-        justify-content: space-between;
-        padding: 0.5rem 0;
-        border-bottom: 1px solid #2d3748;
-    }
-    .fee-total {
-        font-weight: bold;
-        color: #ffc107 !important;
-        font-size: 1.1rem;
+    .enrollment-section li {
+        margin-bottom: 0.4rem;
     }
 </style>
 
-<div class="payments-section">
+<div class="enrollment-section">
     <div class="container py-5">
-        <h1 class="text-center mb-5">School Fee Payments</h1>
-
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <!-- Payment Options -->
-                <div class="card mb-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
                     <div class="card-header text-white">
-                        <h4 class="mb-0">Payment Options</h4>
+                        <h2 class="mb-0">Enrollment Information</h2>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <div class="card h-100 border-primary">
-                                    <div class="card-body text-center">
-                                        <div class="mb-3">
-                                            <i class="fas fa-university fa-4x text-primary"></i>
-                                        </div>
-                                        <h5 class="card-title">Bank Transfer</h5>
-                                        <p class="card-text">
-                                            Direct transfer to our school bank account
-                                        </p>
-                                        <a href="#" class="btn btn-outline-warning">
-                                            Make Cash Payment
-                                        </a>
-                                    </div>
-                                </div>
+                        <div class="mb-4">
+                            <h3 class="text-primary mb-4">Enrollment Process</h3>
+                            
+                            <div class="mb-4">
+                                <h5>Step 1: Check Eligibility</h5>
+                                <p>Children aged 5-12 years are eligible for Grades 1-7.</p>
+                                
+                                <h5 class="mt-4">Step 2: Submit Application</h5>
+                                <p>Fill out our online application form with all required information.</p>
+                                <a href="{% url 'enrollment:apply' %}" class="btn btn-warning mt-2">Apply Online Now</a>
+                                
+                                <h5 class="mt-4">Step 3: Interview & Assessment</h5>
+                                <p>Schedule a meeting with our teachers for assessment.</p>
+                                
+                                <h5 class="mt-4">Step 4: Acceptance & Payment</h5>
+                                <p>Complete fee payment to secure your child's place.</p>
                             </div>
-                            <div class="col-md-6 mb-4">
-                                <div class="card h-100 border-warning">
-                                    <div class="card-body text-center">
-                                        <div class="mb-3">
-                                            <i class="fas fa-money-bill-wave fa-4x text-warning"></i>
-                                        </div>
-                                        <h5 class="card-title">Cash Payment</h5>
-                                        <p class="card-text">
-                                            Pay at the school office during working hours
-                                        </p>
-                                        <a href="#" class="btn btn-outline-warning">
-                                            Make Cash Payment
-                                        </a>
-                                    </div>
-                                </div>
+                            
+                            <div class="mt-5">
+                                <h4 class="text-primary">Required Documents:</h4>
+                                <ul>
+                                    <li>Birth certificate (certified copy)</li>
+                                    <li>Previous school report (if applicable)</li>
+                                    <li>Immunization records</li>
+                                    <li>Parent/Guardian ID copy</li>
+                                    <li>Passport-sized photos (2 copies)</li>
+                                </ul>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Fee Structure -->
-                <div class="card mb-4">
-                    <div class="card-header text-white">
-                        <h4 class="mb-0">Fee Structure</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>Grade</th>
-                                        <th>Term 1</th>
-                                        <th>Term 2</th>
-                                        <th>Term 3</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>Grade 1-3</strong></td>
-                                        <td>$325</td>
-                                        <td>$325</td>
-                                        <td>$325</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Grade 4-7</strong></td>
-                                        <td>$325</td>
-                                        <td>$325</td>
-                                        <td>$325</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- Fee Breakdown -->
-                        <div class="fee-breakdown">
-                            <h5><i class="fas fa-receipt me-2"></i>Fee Breakdown (Per Term)</h5>
-                            <div class="fee-item">
-                                <span>Tuition Fees</span>
-                                <span>$225</span>
+                            
+                            <div class="alert alert-info mt-4">
+                                <h5><i class="fas fa-info-circle me-2"></i>Important Notes</h5>
+                                <ul class="mb-0">
+                                    <li>Applications are processed within 3-5 business days</li>
+                                    <li>Early enrollment is recommended as spaces are limited</li>
+                                    <li>For inquiries, contact: admissions@topgrade.edu</li>
+                                </ul>
                             </div>
-                            <div class="fee-item">
-                                <span>Food</span>
-                                <span>$35</span>
-                            </div>
-                            <div class="fee-item">
-                                <span>Transport</span>
-                                <span>$45</span>
-                            </div>
-                            <div class="fee-item fee-total">
-                                <span><strong>Total per Term</strong></span>
-                                <span><strong>$325</strong></span>
-                            </div>
-                        </div>
-
-                        <div class="alert alert-info mt-3">
-                            <h6><i class="fas fa-info-circle me-2"></i>Fee Information</h6>
-                            <ul class="mb-0">
-                                <li>All fees are per term and payable in advance</li>
-                                <li>Each grade or level has a specific stationary list, required every term</li>
-                                <li>Payment and Stationery list available upon request</li>
-                                <li>Fees include tuition and basic learning materials</li>
-                            </ul>
-                        </div>
-                        <div class="text-center mt-4">
-                            <a href="#" class="btn btn-success">
-                                <i class="fas fa-file-invoice-dollar me-2"></i>View Detailed Fee Structure
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Payment Instructions -->
-                <div class="card">
-                    <div class="card-header text-white">
-                        <h4 class="mb-0">Payment Instructions</h4>
-                    </div>
-                    <div class="card-body">
-                        <h5>For Bank Transfers:</h5>
-                        <ol>
-                            <li>Use student name as reference</li>
-                            <li>Email transfer proof to accounts@topgrade.edu</li>
-                            <li>Keep your transaction ID for verification</li>
-                            <li>Allow 24-48 hours for processing</li>
-                        </ol>
-
-                        <h5 class="mt-4">For Cash Payments:</h5>
-                        <ul>
-                            <li>Pay at the school office between 8 AM - 3 PM</li>
-                            <li>Bring student admission number</li>
-                            <li>Request official receipt</li>
-                            <li>Payments during working days</li>
-                        </ul>
-
-                        <div class="alert alert-warning mt-4">
-                            <h6>
-                                <i class="fas fa-exclamation-triangle me-2"></i>Important Notice
-                            </h6>
-                            <p class="mb-0">
-                                Late payments is greatly discouraged and incurs a penalty fee. Students with outstanding
-                                fees may not be allowed to attend classes.
-                            </p>
                         </div>
                     </div>
                 </div>
